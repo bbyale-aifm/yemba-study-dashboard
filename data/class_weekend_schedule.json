@@ -1,0 +1,716 @@
+[
+  {
+    "date": "2026-08-14",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 411",
+    "class_name": "Customer",
+    "location": "4400"
+  },
+  {
+    "date": "2026-08-14",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-08-14",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 407",
+    "class_name": "Statistics",
+    "location": "4400"
+  },
+  {
+    "date": "2026-08-15",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 404",
+    "class_name": "Economics",
+    "location": "4400"
+  },
+  {
+    "date": "2026-08-15",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 404",
+    "class_name": "Game Theory",
+    "location": "4400"
+  },
+  {
+    "date": "2026-08-28",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 411",
+    "class_name": "Customer",
+    "location": "4400"
+  },
+  {
+    "date": "2026-08-28",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-08-28",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 407",
+    "class_name": "Statistics",
+    "location": "4400"
+  },
+  {
+    "date": "2026-08-29",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 404",
+    "class_name": "Game Theory",
+    "location": "4400"
+  },
+  {
+    "date": "2026-08-29",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT XXX",
+    "class_name": "AI Foundations for Managers",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-11",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 411",
+    "class_name": "Customer",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-11",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-09-11",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 407",
+    "class_name": "Statistics",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-12",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 410",
+    "class_name": "Competitor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-12",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT XXX",
+    "class_name": "AI Foundations for Managers",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-25",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 411",
+    "class_name": "Customer",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-25",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-09-25",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 407",
+    "class_name": "Statistics",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-26",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 410",
+    "class_name": "Competitor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-09-26",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT XXX",
+    "class_name": "AI Foundations for Managers",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-09",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 411",
+    "class_name": "Customer",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-09",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-10-09",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 407",
+    "class_name": "Statistics",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-10",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 410",
+    "class_name": "Competitor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-10",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT XXX",
+    "class_name": "AI Foundations for Managers",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-23",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 411",
+    "class_name": "Customer",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-23",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-10-23",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 422",
+    "class_name": "Operation Engine",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-24",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 410",
+    "class_name": "Competitor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-10-24",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT XXX",
+    "class_name": "AI Foundations for Managers",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-06",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 412",
+    "class_name": "Investor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-06",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-11-06",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 422",
+    "class_name": "Operation Engine",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-07",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 410",
+    "class_name": "Competitor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-07",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT XXX",
+    "class_name": "AI Foundations for Managers",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-20",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 412",
+    "class_name": "Investor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-20",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-11-20",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 422",
+    "class_name": "Operation Engine",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-21",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 410",
+    "class_name": "Competitor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-11-21",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 413",
+    "class_name": "State & Society",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-04",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 412",
+    "class_name": "Investor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-04",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2026-12-04",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 422",
+    "class_name": "Operation Engine",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-05",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 420",
+    "class_name": "Baron/ Adler/Kim",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-05",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 413",
+    "class_name": "State & Society",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-18",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 412",
+    "class_name": "Investor",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-18",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "MGT 401",
+    "class_name": "Managing Groups & Teams",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-18",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 422",
+    "class_name": "Operation Engine",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-19",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 420",
+    "class_name": "Baron/ Adler/Kim",
+    "location": "4400"
+  },
+  {
+    "date": "2026-12-19",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 413",
+    "class_name": "State & Society",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-07",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 413",
+    "class_name": "State & Society",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-07",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "MGT 592",
+    "class_name": "Legal Context of Management",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-07",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 592",
+    "class_name": "Legal Context of Management",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-08",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 412",
+    "class_name": "Investor",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-08",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-01-08",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 592",
+    "class_name": "Legal Context of Management",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-09",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 420",
+    "class_name": "Baron/ Adler/Kim",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-09",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 413",
+    "class_name": "State & Society",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-22",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 412",
+    "class_name": "Investor",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-22",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-01-22",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 592",
+    "class_name": "Legal Context of Management",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-23",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 420",
+    "class_name": "Baron/ Adler/Kim",
+    "location": "4400"
+  },
+  {
+    "date": "2027-01-23",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 413",
+    "class_name": "State & Society",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-05",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 423",
+    "class_name": "Sourcing & Managing Funds",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-05",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-02-05",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 592",
+    "class_name": "Legal Context of Management",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-06",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 420",
+    "class_name": "Baron/ Adler/Kim",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-06",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 405",
+    "class_name": "Modeling Managerial Decisions",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-19",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 423",
+    "class_name": "Sourcing & Managing Funds",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-19",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-02-19",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 592",
+    "class_name": "Legal Context of Management",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-20",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 420",
+    "class_name": "Baron/ Adler/Kim",
+    "location": "4400"
+  },
+  {
+    "date": "2027-02-20",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 405",
+    "class_name": "Modeling Managerial Decisions",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-05",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 423",
+    "class_name": "Sourcing & Managing Funds",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-05",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-03-05",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 425",
+    "class_name": "Donovan",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-06",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 421",
+    "class_name": "Innovator",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-06",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 405",
+    "class_name": "Modeling Managerial Decisions",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-19",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 423",
+    "class_name": "Sourcing & Managing Funds",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-19",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-03-19",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 425",
+    "class_name": "Donovan",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-20",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 421",
+    "class_name": "Innovator",
+    "location": "4400"
+  },
+  {
+    "date": "2027-03-20",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 405",
+    "class_name": "Modeling Managerial Decisions",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-02",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 423",
+    "class_name": "Sourcing & Managing Funds",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-02",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-04-02",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 421",
+    "class_name": "Innovator",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-03",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 425",
+    "class_name": "Donovan",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-03",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 405",
+    "class_name": "Modeling Managerial Decisions",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-16",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 423",
+    "class_name": "Sourcing & Managing Funds",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-16",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-04-16",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 421",
+    "class_name": "Innovator",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-17",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 425",
+    "class_name": "Donovan",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-17",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 405",
+    "class_name": "Modeling Managerial Decisions",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-30",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 408",
+    "class_name": "Negotiations",
+    "location": "4400"
+  },
+  {
+    "date": "2027-04-30",
+    "time": "1:00 pm - 2:00 pm",
+    "course_code": "C28 Hub",
+    "class_name": "Colloquium",
+    "location": "TBA"
+  },
+  {
+    "date": "2027-04-30",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 421",
+    "class_name": "Innovator",
+    "location": "4400"
+  },
+  {
+    "date": "2027-05-01",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 425",
+    "class_name": "Donovan",
+    "location": "4400"
+  },
+  {
+    "date": "2027-05-01",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 408",
+    "class_name": "Negotiations",
+    "location": "4400"
+  },
+  {
+    "date": "2027-05-14",
+    "time": "9:00 am - 12:00 pm",
+    "course_code": "MGT 408",
+    "class_name": "Negotiations",
+    "location": "4400"
+  },
+  {
+    "date": "2027-05-14",
+    "time": "2:30 pm - 5:30 pm",
+    "course_code": "MGT 408",
+    "class_name": "Negotiations",
+    "location": "4400"
+  },
+  {
+    "date": "2027-05-15",
+    "time": "8:00 am - 11:00 am",
+    "course_code": "MGT 425",
+    "class_name": "Donovan",
+    "location": "4400"
+  },
+  {
+    "date": "2027-05-15",
+    "time": "12:00 pm - 3:00 pm",
+    "course_code": "MGT 421",
+    "class_name": "Innovator",
+    "location": "4400"
+  }
+]

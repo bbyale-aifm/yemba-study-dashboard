@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Project-specific local data
+*.db
+*.sqlite3
+*.log
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local uploads (optional, if you want to version only sample files)
+uploads/

@@ -1,0 +1,2778 @@
+{
+  "user": {"display_name": "EMBA Student", "email": "student@example.com"},
+  "workspace": {"name": "EMBA Study Workspace", "slug": "emba-study"},
+  "courses": [
+    {
+      "code": "C28 Hub",
+      "name": "EMBA Class of 2028"
+    },
+    {
+      "code": "MGT 401",
+      "name": "Teams I (Managing Groups & Teams)"
+    },
+    {
+      "code": "MGT 402",
+      "name": "Basics of Accounting"
+    },
+    {
+      "code": "MGT 404",
+      "name": "Basics of Economics / Game Theory"
+    },
+    {
+      "code": "MGT 406",
+      "name": "Probability Modeling"
+    },
+    {
+      "code": "MGT 407",
+      "name": "Statistics"
+    },
+    {
+      "code": "MGT 409",
+      "name": "AI Foundations for Managers"
+    },
+    {
+      "code": "MGT 410",
+      "name": "Competitor"
+    },
+    {
+      "code": "MGT 411",
+      "name": "Customer"
+    },
+    {
+      "code": "MGT 699",
+      "name": "EMBA Management Colloquium"
+    }
+  ],
+  "assignments": [
+    {
+      "course_code": "C28 Hub",
+      "title": "Pre-Orientation Course: all attestation quizzes + Upload Personal User Guide due (EMBA Curriculum Overview, Program Overview/Policies, Student Toolkit, Navigating SOM/EMBA Systems, Honor Code, NBI Attestation - all scored 1/1) - all completed",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-01T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "Pre-Orientation Course Questions due (overdue/no submission recorded)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-01T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Personal Goals Plan (due)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-07-10T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "complete",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Welcome announcement posted (informational, no action)",
+      "description": "Assignment · 9:17 AM",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:17 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Session 1 - class session",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Case: CyberCard, part 1 due - scored 10/10",
+      "description": "Assignment · 4:30 PM",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "4:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Experiential Exc #1: The Language of Uncertainty due (ungraded/required, ~10-15 min) - recorded 10/10",
+      "description": "Assignment · 4:30 PM",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "4:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Experiential Exc #2: Judgment & Decision Making due (ungraded/required, ~5 min) - recorded 10/10",
+      "description": "Assignment · 4:30 PM",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "4:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Session 1",
+      "description": "Class · 4:45 PM - 6:15 PM",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "4:45 PM - 6:15 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Chapter 1: Myths of Common Sense - Duncan J Watts (pre-read for Session 1)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "CyberCard case (read before Session 1; do not analyze yet, just come prepared to discuss) - file '2025 CyberCard.pdf'",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-14T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Session 1A and 1B - Fundamentals of financial statements / Balance sheet",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Basics of Economics - Session 1",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Team Foundations Charter (due)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Review Session led by Prof. Patrick Noonan",
+      "description": "Review Session · 5:45 PM - 6:45 PM",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "5:45 PM - 6:45 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 1 (pre-read for Class 1A: Fundamentals of financial statements)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 2 (pre-read for Class 1B: Balance sheet)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "TSA PreCheck.pdf (Recommended, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Southwest Airlines.pdf (Recommended, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "U.S. pilot shortage.pdf (Recommended, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Uber Surge pricing.pdf (Recommended, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-15T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Session 2",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Experiential Exc #3: Software Shakedown due - scored 10/10",
+      "description": "Assignment · 8:30 AM",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Problem Set #1 - warmup due - scored 10/10",
+      "description": "Assignment · 8:30 AM",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Session 2 - class session",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Review Session (probability tables: marginal/joint/conditional; dynamic model building in Excel)",
+      "description": "Review Session · 5:45 PM - 6:45 PM",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "5:45 PM - 6:45 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Assignment 1: Introduction & Balance Sheet (quiz, due) - scored 10/10",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "Picnic and parking logistics circulated for Jul 19 Annual Summer Picnic (informational announcement, not itself an event date)",
+      "description": "Class · Time not specified",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Class",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Diversity at Work - Scientific American Mind, Mannix & Neale (pre-read for Session 2)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "How Diversity Works - Katherine W Phillips (pre-read for Session 2)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-16T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Session 2A and 2B - Income statement / Preparing balance sheet and income statement",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Basics of Economics - Session 2",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Office Hour - labeled 'Instructor Office Hours' on Home page but 'TA Office Hour' on Syllabus Calendar (see discrepancy note), on Zoom",
+      "description": "Review Session · 5:45 PM - 6:45 PM",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "5:45 PM - 6:45 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 3 (pre-read for Class 2A: Income statement)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 3, pgs 53-63 (pre-read for Class 2B: Preparing balance sheet and income statement)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Amazon's Kiva robot.pdf (Required, Session 2)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Tesla.pdf (Recommended, Session 2)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Uber Prices and Cabs.pdf (Recommended, Session 2)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-17T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Session 3A and 3B - Working Capital / Long-lived Assets",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Basics of Economics - Session 3",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Review Session",
+      "description": "Review Session · 5:45 PM - 6:45 PM",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "5:45 PM - 6:45 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "TA-led review session (TA Ruben), classroom 4400 - time not specified in Canvas (per Jul 18 announcement, replaced original plan)",
+      "description": "Review Session · Time not specified",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 8 (pre-read for Class 3A: Working Capital)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 11 (pre-read for Class 3B: Long-lived Assets)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Cargo Colossus.pdf (Recommended, Session 3)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Rubber Producers.pdf (Recommended, Session 3)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-18T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "EMBA Annual Summer Picnic (family/guest event) - Breakfast, Evans Hall tour, Family POP Panel, Campus Tour, Picnic in courtyard",
+      "description": "Class · 8:00 AM - 2:00 PM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Session 3",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Case: CyberCard, part 2 [GROUP WORK] due - scored 10/10",
+      "description": "Assignment · 8:30 AM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Experiential Exc #4a: Estimating Health Risks due - scored 5/5",
+      "description": "Assignment · 8:30 AM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Problem Set #2 due - scored 10/10",
+      "description": "Assignment · 8:30 AM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Instructor Review Session, room 4400",
+      "description": "Review Session · 2:30 PM - 3:30 PM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "2:30 PM - 3:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "TA Office Hour, on Zoom",
+      "description": "Review Session · 5:00 PM - 6:00 PM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "5:00 PM - 6:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Assignment 2: Prepare balance sheet and income statement for Grow Company (group assignment per announcement) - scored 9.5/10",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Problem Set 1 (Basics of Econ) due - scored 21/22",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-19T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Basics of Economics - Session 4",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Session 3 - class session",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Review Session (Excel probability distributions: Normal, Binomial, Poisson)",
+      "description": "Review Session · 4:45 PM - 5:45 PM",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "4:45 PM - 5:45 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "TA Office Hour, on Zoom",
+      "description": "Review Session · 6:45 PM - 7:45 PM",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "6:45 PM - 7:45 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Assignment 3: Accounts Receivable at Microsoft - scored 8.75/10",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Evidence for a Collective Intelligence Factor (pre-read for Session 3)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "OpenTable.pdf (Recommended, Session 4)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Airlines.pdf (Recommended, Session 4)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-20T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Session 4A and 4B - Cash Flow Statement / Preparing Cash Flow Statement",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-21T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Session 4",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-21T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Case: CyberCard, part 3 [GROUP WORK] due - scored 10/10",
+      "description": "Assignment · 1:30 PM",
+      "due_at": "2026-07-21T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Experiential Exc #4b: Making Interval Estimates due - scored 5/5",
+      "description": "Assignment · 1:30 PM",
+      "due_at": "2026-07-21T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Problem Set #3 due - scored 10/10",
+      "description": "Assignment · 1:30 PM",
+      "due_at": "2026-07-21T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "Executive Coaching session prep: review InspireCorp intro slides, bring team charter (ahead of Jul 22-23 coaching sessions)",
+      "description": "Class · Time not specified",
+      "due_at": "2026-07-21T00:00:00-04:00",
+      "category": "Class",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 4 (pre-read for Session 4A/4B)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-21T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Session 4 - class session",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Basics of Economics - Session 5",
+      "description": "Class · 2:30 PM - 5:30 PM",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "2:30 PM - 5:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Instructor Review Session, room 4400",
+      "description": "Review Session · 6:00 PM - 7:00 PM",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "6:00 PM - 7:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Assignment 4: Prepare cash flow statement (individual) - scored 9.5/10",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "Executive Coaching sessions, Learning Teams 1-10 (by team, breakout rooms 2461/2471/2469/2465) - required attendance",
+      "description": "Class · 11:30 AM / 12:30 PM / 1:30 PM",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "11:30 AM / 12:30 PM / 1:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "(Skim Only) Coordination Neglect - Chip Heath & Nancy Staudenmayer (pre-read for Session 4, marked skim-only in title)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Philadelphia Soda Tax.pdf (Recommended, Session 5)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Seattle Soda Tax.pdf (Recommended, Session 5)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-22T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Session 5 - Financial Statement Analysis: Ratios and Case Study",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Session 5 - class session",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Experiential Exc #5: Data Collection [GROUP WORK] due - scored 10/10",
+      "description": "Assignment · 1:30 PM",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Review Session",
+      "description": "Review Session · 4:45 PM - 5:45 PM",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "4:45 PM - 5:45 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "TA Office Hour, on Zoom",
+      "description": "Review Session · 8:00 PM - 9:00 PM",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "8:00 PM - 9:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "Executive Coaching sessions, Learning Teams 11-13 (breakout rooms 2469/2471) - required attendance",
+      "description": "Class · 11:30 AM / 12:30 PM",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "11:30 AM / 12:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "How Power Struggles Escalate - Lindred Greer (pre-read for Session 5)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Chapter 7 (pre-read for Session 5)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Review session on preparing the cash flow statement (recording posted to Media Library) - time not specified in Canvas",
+      "description": "Review Session · Time not specified",
+      "due_at": "2026-07-23T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Session 5 (final class session)",
+      "description": "Class · 8:30 AM - 11:30 AM",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:30 AM - 11:30 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Problem Set #4 due - scored 10/10 (instructor later cancelled grading and gave full credit to all)",
+      "description": "Assignment · 8:30 AM",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Basics of Economics - Session 6",
+      "description": "Class · 1:30 PM - 4:30 PM",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:30 PM - 4:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Assignment 5: Ethics in Accounting: A letter from prison - scored 9/10",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Discussion material for Kansas City Zephyrs Baseball Club case (per announcement, 'preview' before class - same as Required Case below)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Disney Pricing.pdf (Required, Session 6)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Keurig.pdf (Required, Session 6)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "OpenTable.pdf (Recommended, Session 6, re-listed)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Airlines.pdf (Recommended, Session 6, re-listed)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Market Power.pdf (Recommended NOT REQUIRED, textbook, Session 6)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Near Monopolies.pdf (Recommended NOT REQUIRED, textbook, Session 6)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Price Discrimination.pdf (Recommended NOT REQUIRED, textbook, Session 6)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-07-24T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Session 6A and 6B - Accounting and Performance Measurement / Discretion and Ethics in Financial Reporting",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-07-25T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Session 6 - class session",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-07-25T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Course evaluation reminder (deadline 'tonight' per announcement) - not a graded Canvas assignment, informational deadline only",
+      "description": "Assignment · 12:30 PM",
+      "due_at": "2026-07-25T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "12:30 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "MGT 401 (Teams I) course evaluation closes",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-25T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Debriefing Tips and Outline - Tannenbaum & Salas (pre-read for Session 6)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-25T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "MGT 402 - Kansas City Zephyrs Baseball Club (case), Krishna G. Palepu (Required Case for Class 6A)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-25T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "MGT 402 - A Letter from Prison, Eugene Soltes (Required Case for Class 6B)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-07-25T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Optional Zoom review session (final exam prep)",
+      "description": "Review Session · 7:00 PM - 8:00 PM",
+      "due_at": "2026-07-26T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "7:00 PM - 8:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "MGT 402 (Basics of Accounting) course evaluation closes (deadline extended from originally-announced Jul 25 11:30 AM)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-26T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "Final Exam period OPENS (per Jul 26 announcement; not shown on Assignments/Syllabus pages, only the closing deadline is)",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-07-27T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "MGT 406 (Probability Modeling) course evaluation closes",
+      "description": "Assignment · 11:30 AM",
+      "due_at": "2026-07-27T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Instructor Office Hour, on Zoom",
+      "description": "Review Session · 8:00 PM - 9:00 PM",
+      "due_at": "2026-07-27T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "8:00 PM - 9:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Problem Set 2 (Basics of Econ) due - scored 18/18",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-07-27T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "Year One Residency completion / re-entry message from EMBA Program Team (informational, not a due item)",
+      "description": "Class · Time not specified",
+      "due_at": "2026-07-28T00:00:00-04:00",
+      "category": "Class",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Individual Analysis (due)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-07-31T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "complete",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Individual Feedback on Group Members (due)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-07-31T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Instructor Office Hour, on Zoom (found only in Syllabus Calendar, not on Home page's office-hours list)",
+      "description": "Review Session · 8:00 PM - 9:00 PM",
+      "due_at": "2026-08-03T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "8:00 PM - 9:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "TA Office Hour, on Zoom (found only in Syllabus Calendar, not on Home page's office-hours list)",
+      "description": "Review Session · 8:00 PM - 9:00 PM",
+      "due_at": "2026-08-10T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "8:00 PM - 9:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Final Exam (quiz) - scored 71.43/100",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-08-10T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 402",
+      "title": "Bonus Assignment: Financial Statement Analysis with AI - scored 8/10",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-08-10T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 406",
+      "title": "FINAL EXAM due (60 pts, closed-collaboration/open-book/no-AI) - scored 30/60",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-08-12T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "'Know your class' survey due (2-min Qualtrics survey, pre-course; only mentioned in Announcements)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-08-13T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Session 1A and 1B",
+      "description": "Class · 9:00 AM - 12:00 PM",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "9:00 AM - 12:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 1 - Kick-Off Session, Snyder Forum (1st floor)",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz: Kick-Off Colloq. due (1 pt) - scored 1/1",
+      "description": "Assignment · 1:20 PM",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:20 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Session 1",
+      "description": "Class · 2:30 PM - 5:30 PM",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "2:30 PM - 5:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "AI as data analyst - Paul Bradshaw.pdf (Optional Reading, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "How to spot AI writing - The Economist.pdf (Optional Reading, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Teaching the art of pulling truths from economic data (Optional Reading, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Customer Perspective - An Introductory Note.pdf (Required, Session 1)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Market Segmentation.pdf (Required, Session 1)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Brand Positioning.docx (Required, Session 1)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Customer Perspective Video Series.pdf (Optional, Session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-14T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Basics of Economics - Session 7",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-08-15T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Problem Set 3 (Basics of Econ) due - scored 22/26",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-08-15T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Game Theory - class session 1",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-08-15T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Slides, Trade [Optional].pdf (Session 7)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-15T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Dixit+Skeath Chapter 4.pdf (Supplementary, Game Theory session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-15T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Dixit+Nalebuff Chapters 2, 3 and 4.pdf (Supplementary, Game Theory session 1)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-15T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Instructor Office Hour, on Zoom",
+      "description": "Review Session · 8:00 PM - 9:00 PM",
+      "due_at": "2026-08-17T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "8:00 PM - 9:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Review Session #1 (Jacob Miller, TA) - one-time later start (8pm instead of usual 7pm), recorded",
+      "description": "Review Session · 8:00 PM - 9:00 PM",
+      "due_at": "2026-08-19T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "8:00 PM - 9:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Game theory problem set 1 due - not yet graded",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-08-24T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "PS 1 due (100 pts) - not yet graded",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-08-26T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Econ Final Exam due (80 pts) - not yet graded, closed",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-08-27T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Session 2A and 2B",
+      "description": "Class · 9:00 AM - 12:00 PM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "9:00 AM - 12:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Inspire Medical Systems - Group case due (10 pts) - not yet graded",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Peer Ratings - Inspire Medical Systems due (quiz, 0 pts) - not yet graded",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Office Hours (AI vibe coder setup help), room 4430 - added slot due to EMBA schedule conflict",
+      "description": "Review Session · 12:00 PM - 2:30 PM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "12:00 PM - 2:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 2 - Speaker: Michelle Gabriel, PhD, MS (CBEY / Yale School of the Environment), Room 2400",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm) - scored 1/1",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Office Hours (AI vibe coder setup help), room 4430 - originally announced slot",
+      "description": "Review Session · 2:00 PM - 4:00 PM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "2:00 PM - 4:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Session 2",
+      "description": "Class · 2:30 PM - 5:30 PM",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "2:30 PM - 5:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Most Likely To Succeed - The New Yorker.pdf (Optional Reading, Session 2)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Note on Customer Lifetime Value.pdf (Required, Session 2)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "preparing-for-loyaltys-next-frontier-ecosystems.pdf (Optional, Session 2)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-28T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Game Theory - class session 2",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-08-29T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Pre-Work due (AI vibe coder setup + connect Yale AI tokens)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-08-29T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "C28 Hub",
+      "title": "MGT 404 (Basics of Economics/Game Theory) course evaluation closes",
+      "description": "Assignment · 11:30 AM",
+      "due_at": "2026-08-29T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:30 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Session 1, room 4400",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-08-29T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Dixit+Skeath Chapter 3.pdf (Supplementary, Game Theory session 2)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-29T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Dixit+Skeath Chapter 9.pdf (Supplementary, Game Theory session 2)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-08-29T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Review Session #2 (Jacob Miller, TA)",
+      "description": "Review Session · 7:00 PM - 8:00 PM",
+      "due_at": "2026-09-02T00:00:00-04:00",
+      "category": "Review Session",
+      "source_time": "7:00 PM - 8:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Game theory problem set 2 due (available until Sep 17 - see discrepancy note)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-09-06T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Consumer Choice Exercise - Individual due (5 pts)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-09-10T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Homework 1 due (100 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "PS 2 due (100 pts) - note unusual 9am deadline, not end-of-day",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Session 3A and 3B",
+      "description": "Class · 9:00 AM - 12:00 PM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "9:00 AM - 12:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Chase Sapphire - Group case due (10 pts)",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Peer Ratings - Chase Sapphire due (quiz, 0 pts)",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 3 - Speaker: Paul Doremus, PhD (Trident Seafoods), Snyder Forum",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm)",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Session 3",
+      "description": "Class · 2:30 PM - 5:30 PM",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "2:30 PM - 5:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "NYT Bordeaux Equation.pdf (Optional Reading, Session 3)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "NYT Bordeaux Equation - AI generated followup.pdf (Optional Reading, Session 3)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Chase Sapphire.docx (Required, Session 3)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Consumer Behavior.pdf (Required, Session 3)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-09-11T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Session 1A and 1B",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-09-12T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 1A due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-09-12T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 1B due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-09-12T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Session 2, room 4400",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-09-12T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "A Note on the Competitor Perspective.pdf (Required, Session 1)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-09-12T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 404",
+      "title": "Game Theory Final Exam due (25 pts, not available until Sep 7)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-09-13T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "PS 3 due (100 pts)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-09-23T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Homework 2 due (available from Sep 12 3:00pm)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Homework 1 (Individual) - Class 2A due (10 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Session 4A and 4B",
+      "description": "Class · 9:00 AM - 12:00 PM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "9:00 AM - 12:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "HIV Prevention - Group case due (10 pts)",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Peer Ratings - HIV Prevention due (quiz, 0 pts)",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 4 - Speaker: Jonathan Cohn (The Bulwark), Snyder Forum",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm)",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Session 4",
+      "description": "Class · 2:30 PM - 5:30 PM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "2:30 PM - 5:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 401",
+      "title": "Session 7 (Required Teams Check-in 1)",
+      "description": "Class · 5:45 PM - 7:00 PM",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "5:45 PM - 7:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Chetty Value Added Debate - AI generated.pdf (Optional Reading, Session 4)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Do Better at Doing Good.docx (Required, Session 4)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Marketing Reading Digital Marketing.docx (Required, Session 4)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Social Media.docx (Optional, Session 4)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-09-25T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Session 2A and 2B",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-09-26T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 2B due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-09-26T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Session 3, room 4400",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-09-26T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "OPEC oil 'price war' will halt shale boom, say US producers.pdf (Required, Session 2)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-09-26T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "PS 4 due (100 pts)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-10-07T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Homework 3 due (available from Sep 26 3:00pm)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Session 5A and 5B",
+      "description": "Class · 9:00 AM - 12:00 PM",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "9:00 AM - 12:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Melissa Wood - Group case due (10 pts)",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Peer Ratings - Melissa Wood due (quiz, 0 pts)",
+      "description": "Assignment · 9:00 AM",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "9:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 5 - Speaker: Juan Carlos Garcia, MBA (Quadrant Capital Advisors), Room 2400",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm)",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 407",
+      "title": "Session 5 (no optional reading posted for this session)",
+      "description": "Class · 2:30 PM - 5:30 PM",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "2:30 PM - 5:30 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Melissa Wood Health.docx (Required, Session 5)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Saloner, Shepard, Podolny - Chapter 4 Internal Context Organizational Design.pdf (Required, Session 5)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-10-09T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Session 3A and 3B",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-10-10T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 3A due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-10-10T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 3B due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-10-10T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Session 4, room 4400",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-10-10T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Walmart vs. Target Case.docx (Required, Session 3)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-10-10T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Cabral, pp 205-215.pdf (Recommended, Session 3)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-10-10T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Cabral, pp 215-221.pdf (Recommended, Session 3)",
+      "description": "Suggested Reading · Time not specified",
+      "due_at": "2026-10-10T00:00:00-04:00",
+      "category": "Suggested Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Capstone Case: TIAA: Reaching Out - Group due (10 pts)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-10-21T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "TIAA-Ad - Group due (10 pts)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-10-21T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Peer Ratings - TIAA due (quiz, 0 pts)",
+      "description": "Assignment · 5:00 PM",
+      "due_at": "2026-10-21T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "5:00 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Note on Pricing.pdf (Required, Session 6)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-10-21T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Case link for TIAA.pdf (Required, Session 6)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-10-21T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Homework 4 due (available from Oct 10 3:00pm)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-10-23T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Homework 2 (Individual) - Class 4A due (10 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-10-23T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Session 6A and 6B (final class session)",
+      "description": "Class · 9:00 AM - 12:00 PM",
+      "due_at": "2026-10-23T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "9:00 AM - 12:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 6 - Speaker: Martha Crawford, MS, MBA, PhD (Board Director), Room 4400",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-10-23T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm)",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-10-23T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Session 4A and 4B",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-10-24T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 4B due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-10-24T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Session 5, room 4400",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-10-24T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "The Five Competitive Forces That Shape Strategy.docx (Required, Session 4)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-10-24T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Industry Analysis and Oligopoly Models by Thomas Hubbard.pdf (Required, Session 4)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-10-24T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 411",
+      "title": "Final Exam Paper due (35 pts, available from Sep 25)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-11-01T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Homework 5 due (available from Oct 24 3:00pm)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-11-06T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Homework 6 (Optional) due (available from Oct 24 3:00pm)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-11-06T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 7 - Speaker: Omar Lateef, MD (CEO, Rush Health), Room 4400",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-11-06T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm)",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-11-06T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Session 5A and 5B",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-11-07T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 5A due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-11-07T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Practice Problems - Class 5B due (0 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-11-07T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Session 6, room 4400",
+      "description": "Class · 12:00 PM - 3:00 PM",
+      "due_at": "2026-11-07T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "12:00 PM - 3:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Spotify, Face the Music - 2024.docx (Required, Session 5)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-11-07T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Judy Chevalier Lecture.mp4 (Required Video, Session 5)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-11-07T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Leniency YouTube Videos.docx (Required Video, Session 5)",
+      "description": "Required Reading · Time not specified",
+      "due_at": "2026-11-07T00:00:00-04:00",
+      "category": "Required Reading",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Homework 3 (Learning Teams 1-6) - Class 6A due (10 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-11-20T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Homework 3 (Learning Teams 7-13) - Class 6B due (10 pts)",
+      "description": "Assignment · 8:00 AM",
+      "due_at": "2026-11-20T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "8:00 AM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 8 - Speaker: Brian Reilly, JD (CFO, LuxWall), Snyder Forum",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-11-20T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm)",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-11-20T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 409",
+      "title": "Final Project due (50 pts, available from Nov 7 3:00pm)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-11-20T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Session 6A and 6B (final class session, no assigned reading)",
+      "description": "Class · 8:00 AM - 11:00 AM",
+      "due_at": "2026-11-21T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "8:00 AM - 11:00 AM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 9 - Speaker: Hil Moss, MBA, MPH (Co-Founder/CEO, Oncovery Care), Snyder Forum",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2026-12-04T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt, opens 12:45pm)",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2026-12-04T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Final Exam due (Quiz, not available until Nov 22 - not listed in Modules, see discrepancy note)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-12-06T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 410",
+      "title": "Homework 3 Grades (10 pts, likely a grade-recording placeholder, not a student deliverable)",
+      "description": "Assignment · Time not specified",
+      "due_at": "2026-12-06T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": null,
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Paper #1 due (Fall semester reflection paper)",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2026-12-13T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 10 - Speaker: Ryan Dings, JD, MDesS (CEO, Climate Haven), Snyder Forum [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-01-08T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-01-08T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 11 - Speaker: Nancy Zimmerman (Bracebridge Capital), Location TBA [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-01-22T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-01-22T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 12 - Speaker: Pamela Sutton-Wallace, MPH (President, Yale New Haven Health), Snyder Forum [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-02-05T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-02-05T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 13 - Speaker: Paula Volent, MBA, MA (Rockefeller University), Snyder Forum [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-02-19T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-02-19T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 14 - Speaker: Elizabeth Bradley, MBA, PhD (President, Vassar University), Snyder Forum [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-03-05T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-03-05T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 15 - Speaker: Seema Hingorani, MBA (Morgan Stanley; Founder, Girls Who Invest), Snyder Forum [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-03-19T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-03-19T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 16 - Speaker: Daniel Dawes, JD (Founding Dean, School of Global Health, Meharry Medical College), Snyder Forum [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-04-02T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-04-02T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 17 - Speaker: Beatriz Perez (EVP, The Coca-Cola Company), Location TBA [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-04-16T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-04-16T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Session 18 - Speaker: Yariv Itah, MBA (Casey Quirk - a Deloitte Business), Location TBA [Spring 2027 term]",
+      "description": "Class · 1:00 PM - 2:00 PM",
+      "due_at": "2027-04-30T00:00:00-04:00",
+      "category": "Class",
+      "source_time": "1:00 PM - 2:00 PM",
+      "status": "not_started",
+      "priority": "normal"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Attendance Quiz due (1 pt) [Spring 2027 term]",
+      "description": "Assignment · 1:05 PM",
+      "due_at": "2027-04-30T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "1:05 PM",
+      "status": "not_started",
+      "priority": "high"
+    },
+    {
+      "course_code": "MGT 699",
+      "title": "Paper #2 due (Spring semester reflection paper) [Spring 2027 term]",
+      "description": "Assignment · 11:59 PM",
+      "due_at": "2027-05-09T00:00:00-04:00",
+      "category": "Assignment",
+      "source_time": "11:59 PM",
+      "status": "not_started",
+      "priority": "high"
+    }
+  ]
+}

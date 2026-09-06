@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yale EMBA '28 Study Hub</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body class="{% if calendar_only %}calendar-only{% elif request.query_params.get('view') == 'materials' %}materials-only{% elif request.query_params.get('view') == 'assistant' %}assistant-only{% endif %}">
+  <header class="topbar">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <div class="brand-lockup">
+      <div class="crest" aria-hidden="true">Y</div>
+      <div>
+        <div class="brand-line"><span class="brand-name">Yale School of Management</span><span class="cohort-pill">EMBA '28</span></div>
+        <p class="brand-subtitle">Your study hub <span>•</span> classes, deadlines, and course materials in one place</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <label class="search-box"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search courses, readings, notes..." aria-label="Search study materials"></label>
+      <a class="outline-action" href="https://canvas.yale.edu" target="_blank" rel="noopener">Open Canvas ↗</a>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="sidebar">
+      <div class="sidebar-panel">
+        <div class="sidebar-heading"><span>Navigation menu</span><strong>EMBA '28</strong></div>
+        <nav aria-label="Workspace navigation">
+          <a class="nav-item {% if not calendar_only %}active{% endif %}" href="/"><span class="nav-icon">▦</span> Overview</a>
+          <a class="nav-item {% if request.query_params.get('view') == 'materials' %}active{% endif %}" href="/?view=materials"><span class="nav-icon">▱</span> Course materials</a>
+          <a class="nav-item {% if calendar_only %}active{% endif %}" href="/?view=calendar"><span class="nav-icon">□</span> Academic calendar</a>
+          <a class="nav-item {% if request.query_params.get('view') == 'assistant' %}active{% endif %}" href="/?view=assistant"><span class="nav-icon gold">✦</span> Study assistant</a>
+        </nav>
+        <div class="sidebar-stats">
+          <div><span>Cohort</span><strong>Yale EMBA '28</strong></div>
+          <div><span>Active courses</span><strong>{{ active_courses }}</strong></div>
+          <div><span>Vaulted materials</span><strong>{{ vaulted_materials }}</strong></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="main-content" id="overview">
+      <div class="page-heading homepage-only">
+        <div><p class="eyebrow">Fall 2026 executive term</p><h1>See your week at a glance.</h1><p class="lede">Your classes, deadlines, and study materials, all in one easy place.</p></div>
+      </div>
+
+      <section class="summary homepage-only" aria-label="Study summary">
+        <article class="summary-card gold-edge"><span>Upcoming deadlines</span><strong>{{ assignments|length }}</strong><small>Across your active courses</small></article>
+        
+        <article class="summary-card green-edge calendar-status-card"><span>Calendar status</span><strong>Ready</strong><div class="view-choice" role="group" aria-label="Choose dashboard view"><span>View</span><button class="view-choice-button" data-layout="mobile" type="button">Mobile</button><button class="view-choice-button" data-layout="desktop" type="button">Desktop</button></div><small>Canvas calendar feed sync is active</small></article>
+      </section>
+
+      <div class="quick-actions homepage-only" aria-label="Quick actions">
+        <button id="uploadSyllabusButton" type="button"><b class="gold-icon">▤</b><span><strong>Upload a new class syllabus</strong><small>Import readings, assignments, and review sessions</small></span><b>↑</b></button><input id="syllabusFile" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+        <a class="quick-action-link" href="/?view=assistant"><b class="blue-icon">□</b><span><strong>Plan the weekend or week</strong><small>Build a realistic study plan</small></span><b>+</b></a>
+        <button id="syncCanvasButton" type="button"><b class="purple-icon">↻</b><span><strong>Sync course calendar</strong><small>Refresh assignments and Canvas events</small></span><b>↗</b></button>
+      </div>
+
+      <div class="content-grid">
+        <section class="panel assignments-panel homepage-only" id="calendar">
+          <div class="panel-heading"><div><p class="eyebrow">Next up</p><h2>Upcoming deadlines</h2><p class="panel-subtitle">Keep track of readings, assignments, and review sessions</p></div><div class="assignment-tools"><div class="category-filters" aria-label="Filter by category">{% for category in ['Assignment', 'Required Reading', 'Suggested Reading', 'Review Session'] %}<label><input class="category-filter" type="checkbox" value="{{ category }}" checked> {{ category }}</label>{% endfor %}</div></div></div>
+          {% if assignments %}
+            <div class="assignment-list">
+            {% for assignment in assignments %}
+              <article class="assignment-row" data-status="{{ assignment.status.value }}" data-category="{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}" data-search="{{ assignment.title }} {{ course_names.get(assignment.course_id, 'General') }}">
+                <div class="date-block"><strong>{{ assignment.due_at.strftime('%d') }}</strong><span>{{ assignment.due_at.strftime('%b') }}</span></div>
+                <div class="assignment-copy"><h3>{{ assignment.title }}</h3><p>{{ course_names.get(assignment.course_id, 'General') }} <span>•</span> {{ assignment.priority|title }} priority</p></div><span class="category-tag">{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}</span>
+                <select class="status status-select status-{{ assignment.status.value }}" data-assignment-id="{{ assignment.id }}" aria-label="Update status"><option value="not_started"{% if assignment.status.value == 'not_started' %} selected{% endif %}>Not started</option><option value="in_progress"{% if assignment.status.value == 'in_progress' %} selected{% endif %}>In progress</option><option value="complete"{% if assignment.status.value == 'complete' %} selected{% endif %}>Complete</option></select>
+              </article>
+            {% endfor %}
+            </div>
+          {% else %}
+            <div class="empty-state"><h3>Your next deadline will appear here.</h3><p>Add a task or connect a course to get started.</p></div>
+          {% endif %}
+          <p class="filter-empty" id="filterEmpty" hidden>No deadlines match that view.</p>
+        </section>
+
+        <section class="panel calendar-panel {% if not calendar_only %}overview-hidden{% endif %}" id="literal-calendar">
+          <div class="panel-heading"><div><p class="eyebrow">Everything due</p><h2>Academic calendar</h2><p class="panel-subtitle">Classes, assignments, readings, and review sessions on each day</p></div><label class="month-filter">Month <select id="calendarMonth">{% for month in calendar_months %}<option value="{{ month['key'] }}"{% if month['key'] == current_calendar_month %} selected{% endif %}>{{ month['label'] }}</option>{% endfor %}</select></label></div>
+          <div class="calendar-legend"><span class="legend-class">Class</span><span class="legend-assignment">Assignment</span><span class="legend-required-reading">Required reading</span><span class="legend-suggested-reading">Suggested reading</span><span class="legend-review-session">Review session</span></div>
+          {% for month in calendar_months %}<div class="month-calendar" data-calendar-month="{{ month['key'] }}"><div class="calendar-week calendar-header"><span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span></div>{% for week in month['weeks'] %}<div class="calendar-week">{% for day in week %}<div class="calendar-day{% if not day['day'] %} blank{% endif %}">{% if day['day'] %}<strong class="day-number">{{ day['day'] }}</strong>{% for item in day['items'] %}<article class="calendar-event calendar-event-{{ (item.description.split(' · ')[0] if item.description else 'Assignment')|lower|replace(' ', '-') }}"><b>{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}</b><span>{{ item.title }}</span><small>{{ course_names.get(item.course_id, 'General') }}{% if calendar_locations.get(item.id) %} · {{ calendar_locations.get(item.id) }}{% endif %}</small></article>{% endfor %}{% endif %}</div>{% endfor %}</div>{% endfor %}</div>{% endfor %}
+        </section>
+
+        <aside class="right-column homepage-only">
+          <section class="panel agenda-panel" id="audio">
+            <div class="panel-heading compact"><div><p class="eyebrow">Study plan</p><h2>{{ agenda_label }}</h2></div><span class="agenda-date">{{ agenda_start.strftime('%b %-d') }}–{{ agenda_end.strftime('%b %-d') }}</span></div>
+            {% for item in agenda_items %}
+            <div class="agenda-row"><span class="agenda-dot {% if loop.index == 1 %}gold-dot{% elif loop.index == 2 %}blue-dot{% else %}green-dot{% endif %}"></span><div><strong>{{ course_names.get(item.course_id, 'General') }}</strong><p>{{ item.title }}</p></div></div>
+            {% else %}<p class="side-copy">No upcoming items.</p>{% endfor %}
+          </section>
+        </aside>
+      </div>
+      <section class="panel class-schedule-panel homepage-only" id="class-weekend-schedule">
+        <div class="panel-heading"><div><p class="eyebrow">Upcoming class weekend</p><h2>Class Weekend Schedule</h2><p class="panel-subtitle">Dates, times, classes, and locations</p></div><label class="month-filter">Month <select id="scheduleMonth">{% for month in schedule_calendar_months %}<option value="{{ month['key'] }}"{% if month['key'] == current_calendar_month %} selected{% endif %}>{{ month['label'] }}</option>{% endfor %}</select></label></div>
+        {% for month in schedule_calendar_months %}<div class="month-calendar schedule-calendar" data-schedule-month="{{ month['key'] }}"><div class="calendar-week calendar-header"><span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span></div>{% for week in month['weeks'] %}<div class="calendar-week">{% for day in week %}<div class="calendar-day{% if not day['day'] %} blank{% endif %}">{% if day['day'] %}<strong class="day-number">{{ day['day'] }}</strong>{% for item in day['items'] %}<article class="schedule-event"><b>{{ item.course_code }}</b><span>{{ item.class_name }}</span><small>{{ item.time }} · {{ item.location }}</small></article>{% endfor %}{% endif %}</div>{% endfor %}</div>{% endfor %}</div>{% endfor %}
+        <p class="schedule-empty" id="scheduleEmpty" hidden>No class sessions are scheduled for that month.</p>
+      </section>
+      <section class="panel dedicated-view materials-view {% if request.query_params.get('view') != 'materials' %}dedicated-hidden{% endif %}" id="materials-view">
+        <div class="panel-heading"><div><p class="eyebrow">Course library</p><h2>Course Materials</h2><p class="panel-subtitle">Required and suggested readings, podcasts, videos, and course files</p></div></div>
+        <a class="secondary-action onedrive-link" href="https://yaleedu-my.sharepoint.com/:f:/g/personal/blessy_bellamy_yale_edu/IgDfIKOPIw3ESKftjEj2CTq3AT-pTra4zCAueJyn0JcInUo?e=kwJRiR" target="_blank" rel="noopener">Open OneDrive course library <span>↗</span></a>
+        <section class="archive-courses"><div class="panel-heading compact"><div><p class="eyebrow">Course history</p><h2>Course History</h2><p class="panel-subtitle">Select one or more terms to update the entire study hub.</p></div><div class="category-filters term-filters" aria-label="Filter by term">{% for term in term_options %}<label><input class="term-filter" type="checkbox" value="{{ term }}"{% if term in selected_terms %} checked{% endif %}> {{ term }}</label>{% endfor %}<label><input class="term-filter-all" type="checkbox"{% if not selected_terms %} checked{% endif %}> All courses / terms</label></div></div><div class="archive-list">{% for term in term_options %}{% if not selected_terms or term in selected_terms %}<div class="archive-term"><h3>{{ term }}</h3><ul>{% for course in courses if course_terms[course.id] == term %}<li>{{ course.code }} · {{ course.name }}</li>{% endfor %}</ul></div>{% endif %}{% endfor %}</div></section>
+        <div class="materials-grid">{% for course_id, materials in course_materials.items() %}<article class="material-course"><h3>{{ course_names.get(course_id, 'General') }}</h3>{% for category, titles in materials.items() %}{% if titles %}<strong>{{ category }}</strong><ul>{% for title in titles %}<li>{{ title }}</li>{% endfor %}</ul>{% endif %}{% endfor %}</article>{% else %}<p class="side-copy">No readings have been imported yet.</p>{% endfor %}</div>
+      </section>
+      <section class="panel dedicated-view assistant-view {% if request.query_params.get('view') != 'assistant' %}dedicated-hidden{% endif %}" id="assistant-view">
+        <div class="panel-heading"><div><p class="eyebrow">Planning partner</p><h2>Study Assistant</h2><p class="panel-subtitle">Ask for help prioritizing assignments, readings, and your week or weekend.</p></div></div>
+        <div class="assistant-profile"><label>Your name <input id="profileName" placeholder="Optional"></label><label>What are you focused on? <input id="profileFocus" placeholder="e.g. finish readings, protect sleep"></label><button class="text-action" id="saveProfile" type="button">Save preferences</button></div><div class="chat-log" id="chatLog"><div class="chat-message assistant-message">Hi! I can help you plan around deadlines, workload, energy, and priorities. Tell me what is going on this week, or ask me to build a weekend plan.</div></div>
+        <form class="chat-form" id="chatForm"><input id="chatInput" placeholder="e.g. Plan my weekend around the next deadlines" autocomplete="off"><button class="primary-action" type="submit">Send</button></form>
+      </section>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const searchInput = document.querySelector('.search-box input');
+    const assignmentRows = [...document.querySelectorAll('.assignment-row')];
+    const categoryFilters = [...document.querySelectorAll('.category-filter')];
+    const globalSearchables = [...document.querySelectorAll('.assignment-row, .calendar-event, .schedule-row, .material-course, .archive-term')];
+    const filterEmpty = document.getElementById('filterEmpty');
+    const toast = document.getElementById('toast');
+    const scheduleMonth = document.getElementById('scheduleMonth');
+    const scheduleRows = [...document.querySelectorAll('.schedule-row')];
+    const scheduleEmpty = document.getElementById('scheduleEmpty');
+    const calendarMonth = document.getElementById('calendarMonth');
+    const calendarMonths = [...document.querySelectorAll('[data-calendar-month]')];
+    const menuToggle = document.getElementById('menuToggle');
+    const uploadButton = document.getElementById('uploadSyllabusButton');
+    const syllabusFile = document.getElementById('syllabusFile');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatLog = document.getElementById('chatLog');
+    const termFilter = document.getElementById('termFilter');
+    const viewButtons = [...document.querySelectorAll('.view-choice-button')];
+    function setLayout(layout) { document.body.classList.remove('layout-mobile', 'layout-desktop'); document.body.classList.add('layout-' + layout); localStorage.setItem('studyHubLayout', layout); viewButtons.forEach((button) => button.setAttribute('aria-pressed', button.dataset.layout === layout)); }
+    setLayout(localStorage.getItem('studyHubLayout') || (window.innerWidth < 700 ? 'mobile' : 'desktop'));
+    viewButtons.forEach((button) => button.addEventListener('click', () => setLayout(button.dataset.layout)));
+
+    function filterAssignments() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      const categories = categoryFilters.filter((filter) => filter.checked).map((filter) => filter.value);
+      let visible = 0;
+      assignmentRows.forEach((row) => {
+        const matchesSearch = row.dataset.search.toLowerCase().includes(query);
+        const matchesCategory = categories.includes(row.dataset.category);
+        row.hidden = !(matchesSearch && matchesCategory);
+        if (!row.hidden) visible += 1;
+      });
+      globalSearchables.forEach((item) => { if (!item.classList.contains('assignment-row')) item.hidden = !!query && !item.textContent.toLowerCase().includes(query); });
+      filterEmpty.hidden = visible !== 0 || assignmentRows.length === 0;
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('visible');
+      window.clearTimeout(showToast.timeout);
+      showToast.timeout = window.setTimeout(() => toast.classList.remove('visible'), 2600);
+    }
+
+    searchInput.addEventListener('input', filterAssignments);
+    categoryFilters.forEach((filter) => filter.addEventListener('change', filterAssignments));
+    const scheduleCalendars = [...document.querySelectorAll('.schedule-calendar')];
+    function showScheduleMonth() { scheduleCalendars.forEach((month) => { month.hidden = month.dataset.scheduleMonth !== scheduleMonth.value; }); }
+    scheduleMonth.addEventListener('change', showScheduleMonth);
+    showScheduleMonth();
+    function showCalendarMonth() { calendarMonths.forEach((month) => { month.hidden = month.dataset.calendarMonth !== calendarMonth.value; }); }
+    calendarMonth.addEventListener('change', showCalendarMonth);
+    showCalendarMonth();
+    menuToggle.addEventListener('click', () => { const open = document.body.classList.toggle('menu-open'); menuToggle.setAttribute('aria-expanded', open); });
+    uploadButton.addEventListener('click', () => syllabusFile.click());
+    syllabusFile.addEventListener('change', async () => {
+      if (!syllabusFile.files.length) return;
+      const form = new FormData(); form.append('file', syllabusFile.files[0]);
+      try { const response = await fetch('/api/syllabus', {method: 'POST', body: form}); const result = await response.json(); showToast(result.message || 'Syllabus processed.'); if (result.status === 'created') window.setTimeout(() => window.location.reload(), 900); }
+      catch (error) { showToast('The syllabus could not be processed.'); }
+      syllabusFile.value = '';
+    });
+    chatForm?.addEventListener('submit', async (event) => {
+      event.preventDefault(); const message = chatInput.value.trim(); if (!message) return;
+      chatLog.insertAdjacentHTML('beforeend', `<div class="chat-message user-message">${message.replaceAll('<','&lt;')}</div>`); chatInput.value = '';
+      const profile = {name: localStorage.getItem('studyHubName') || '', focus: localStorage.getItem('studyHubFocus') || ''};
+      const history = [...chatLog.querySelectorAll('.chat-message')].slice(-8).map((node) => node.textContent);
+      const response = await fetch('/api/study-assistant/chat', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({message, profile, history})});
+      const result = await response.json(); chatLog.insertAdjacentHTML('beforeend', `<div class="chat-message assistant-message">${result.reply.replaceAll('<','&lt;')}</div>`); chatLog.scrollTop = chatLog.scrollHeight;
+    });
+    const profileName = document.getElementById('profileName'); const profileFocus = document.getElementById('profileFocus'); const saveProfile = document.getElementById('saveProfile');
+    if (profileName) profileName.value = localStorage.getItem('studyHubName') || ''; if (profileFocus) profileFocus.value = localStorage.getItem('studyHubFocus') || '';
+    saveProfile?.addEventListener('click', () => { localStorage.setItem('studyHubName', profileName.value.trim()); localStorage.setItem('studyHubFocus', profileFocus.value.trim()); showToast('Study preferences saved.'); });
+    const termFilters = [...document.querySelectorAll('.term-filter')]; const termFilterAll = document.querySelector('.term-filter-all');
+    function applyTermFilter() { const terms = termFilters.filter((item) => item.checked).map((item) => item.value); window.location.href = `/?view=materials${terms.length ? `&terms=${encodeURIComponent(terms.join(','))}` : ''}`; }
+    termFilters.forEach((item) => item.addEventListener('change', () => { if (termFilterAll) termFilterAll.checked = false; applyTermFilter(); }));
+    termFilterAll?.addEventListener('change', () => { if (termFilterAll.checked) { termFilters.forEach((item) => item.checked = false); applyTermFilter(); } });
+    document.getElementById('syncCanvasButton')?.addEventListener('click', async () => {
+      try {
+        const result = await fetch('/api/canvas/sync', {method: 'POST'}).then((response) => response.json());
+        showToast(result.message || 'Canvas calendar sync complete.');
+        if (result.updated) window.setTimeout(() => window.location.reload(), 700);
+      } catch (error) { showToast('Canvas sync failed. Please try again.'); }
+    });
+    window.setInterval(() => fetch('/api/canvas/sync', {method: 'POST'}).then((response) => response.json()).then((result) => { if (result.status === 'success' && result.updated) window.location.reload(); }).catch(() => {}), 15 * 60 * 1000);
+    document.querySelectorAll('[data-placeholder]').forEach((element) => {
+      element.addEventListener('click', () => showToast(`${element.dataset.placeholder} is ready for the next workspace integration.`));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "user": {"display_name": "EMBA Student", "email": "student@example.com"},
+  "workspace": {"name": "EMBA Study Workspace", "slug": "emba-study"},
+  "courses": [
+    {"code": "MGT 407", "name": "Statistics"},
+    {"code": "MGT 412", "name": "Leadership"},
+    {"code": "MGT 425", "name": "Strategy"}
+  ],
+  "assignments": [
+    {"course_code": "MGT 407", "title": "Case analysis: regression decisions", "due_at": "2026-09-10T23:59:00-04:00", "priority": "high", "status": "in_progress"},
+    {"course_code": "MGT 412", "title": "Read: Leading through ambiguity", "due_at": "2026-09-12T09:00:00-04:00", "priority": "normal", "status": "not_started"},
+    {"course_code": "MGT 425", "title": "Strategy memo draft", "due_at": "2026-09-16T23:59:00-04:00", "priority": "high", "status": "not_started"},
+    {"course_code": "MGT 407", "title": "Problem set 2", "due_at": "2026-09-20T23:59:00-04:00", "priority": "normal", "status": "not_started"}
+  ]
+}
