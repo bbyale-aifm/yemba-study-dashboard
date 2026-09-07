@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yale EMBA '28 Study Hub</title>
-  <link rel="stylesheet" href="/static/dashboard.css">
+  <link rel="stylesheet" href="/static/dashboard.css?v=20260907-mobile-order">
 </head>
 <body class="{% if calendar_only %}calendar-only{% elif request.query_params.get('view') == 'materials' %}materials-only{% elif request.query_params.get('view') == 'assistant' %}assistant-only{% endif %}">
   <header class="topbar">
@@ -46,9 +46,10 @@
       </div>
 
       <section class="summary homepage-only" aria-label="Study summary">
-        <article class="summary-card gold-edge"><span>Upcoming deadlines</span><strong>{{ assignments|length }}</strong><small>Across your active courses</small></article>
+        <article class="summary-card gold-edge"><span>Upcoming deadlines</span><strong id="upcomingCount">{{ assignments|length }}</strong><small>Across your active courses, based on the filter below</small></article>
         
-        <article class="summary-card green-edge calendar-status-card"><span>Calendar status</span><strong>Ready</strong><div class="view-choice" role="group" aria-label="Choose dashboard view"><span>View</span><button class="view-choice-button" data-layout="mobile" type="button">Mobile</button><button class="view-choice-button" data-layout="desktop" type="button">Desktop</button></div><small>Canvas calendar feed sync is active</small></article>
+        <article class="summary-card green-edge calendar-status-card sync-{{ canvas_sync_status }}"><span>Calendar status</span><strong>{{ canvas_sync_label }}</strong><small>{{ canvas_sync_detail }}</small></article>
+        <article class="summary-card layout-card"><span>Page layout</span><strong>Choose your view</strong><div class="view-choice" role="group" aria-label="Choose dashboard layout"><button class="view-choice-button" data-layout="mobile" type="button">Mobile</button><button class="view-choice-button" data-layout="desktop" type="button">Desktop</button></div><small>Your preference is saved on this device.</small></article>
       </section>
 
       <div class="quick-actions homepage-only" aria-label="Quick actions">
@@ -59,7 +60,7 @@
 
       <div class="content-grid">
         <section class="panel assignments-panel homepage-only" id="calendar">
-          <div class="panel-heading"><div><p class="eyebrow">Next up</p><h2>Upcoming deadlines</h2><p class="panel-subtitle">Keep track of readings, assignments, and review sessions</p></div><div class="assignment-tools"><div class="category-filters" aria-label="Filter by category">{% for category in ['Assignment', 'Required Reading', 'Suggested Reading', 'Review Session'] %}<label><input class="category-filter" type="checkbox" value="{{ category }}" checked> {{ category }}</label>{% endfor %}</div></div></div>
+          <div class="panel-heading"><div><p class="eyebrow">Next 8 days</p><h2>Upcoming deadlines and events</h2><p class="panel-subtitle">Items due today remain visible through the end of today</p></div><div class="assignment-tools"><div class="category-filters" aria-label="Filter by category">{% for category in ['Assignment', 'Required Reading', 'Suggested Reading', 'Review Session', 'Other'] %}<label><input class="category-filter" type="checkbox" value="{{ category }}" checked> {{ category }}</label>{% endfor %}</div></div></div>
           {% if assignments %}
             <div class="assignment-list">
             {% for assignment in assignments %}
@@ -109,6 +110,13 @@
       </section>
     </section>
   </main>
+  <button class="menu-backdrop" id="menuBackdrop" type="button" aria-label="Close navigation menu" hidden></button>
+  <div class="canvas-review-backdrop" id="canvasReviewBackdrop" hidden></div>
+  <section class="canvas-review-modal" id="canvasReviewModal" role="dialog" aria-modal="true" aria-labelledby="canvasReviewTitle" hidden>
+    <div class="panel-heading compact"><div><p class="eyebrow">Canvas sync review</p><h2 id="canvasReviewTitle">Review proposed changes</h2><p class="panel-subtitle">Approve or deny each item before it is added or updated.</p></div><button class="modal-close" id="canvasReviewClose" type="button" aria-label="Close review">×</button></div>
+    <div class="canvas-review-list" id="canvasReviewList"></div>
+    <div class="canvas-review-actions"><button class="outline-action" id="canvasDenyAll" type="button">Deny all</button><button class="primary-action" id="canvasApproveSelected" type="button">Approve selected</button></div>
+  </section>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script>
     const searchInput = document.querySelector('.search-box input');
@@ -131,19 +139,22 @@
     const termFilter = document.getElementById('termFilter');
     const viewButtons = [...document.querySelectorAll('.view-choice-button')];
     function setLayout(layout) { document.body.classList.remove('layout-mobile', 'layout-desktop'); document.body.classList.add('layout-' + layout); localStorage.setItem('studyHubLayout', layout); viewButtons.forEach((button) => button.setAttribute('aria-pressed', button.dataset.layout === layout)); }
-    setLayout(localStorage.getItem('studyHubLayout') || (window.innerWidth < 700 ? 'mobile' : 'desktop'));
+    const savedLayout = localStorage.getItem('studyHubLayout');
+    setLayout(window.innerWidth < 700 ? 'mobile' : (savedLayout || 'desktop'));
     viewButtons.forEach((button) => button.addEventListener('click', () => setLayout(button.dataset.layout)));
 
     function filterAssignments() {
       const query = (searchInput.value || '').toLowerCase().trim();
-      const categories = categoryFilters.filter((filter) => filter.checked).map((filter) => filter.value);
+      const categories = categoryFilters.filter((filter) => filter.checked).map((filter) => filter.value.trim().toLowerCase());
       let visible = 0;
       assignmentRows.forEach((row) => {
         const matchesSearch = row.dataset.search.toLowerCase().includes(query);
-        const matchesCategory = categories.includes(row.dataset.category);
+        const matchesCategory = categories.includes((row.dataset.category || 'Assignment').trim().toLowerCase());
         row.hidden = !(matchesSearch && matchesCategory);
         if (!row.hidden) visible += 1;
       });
+      const upcomingCount = document.getElementById('upcomingCount');
+      if (upcomingCount) upcomingCount.textContent = visible;
       globalSearchables.forEach((item) => { if (!item.classList.contains('assignment-row')) item.hidden = !!query && !item.textContent.toLowerCase().includes(query); });
       filterEmpty.hidden = visible !== 0 || assignmentRows.length === 0;
     }
@@ -157,6 +168,7 @@
 
     searchInput.addEventListener('input', filterAssignments);
     categoryFilters.forEach((filter) => filter.addEventListener('change', filterAssignments));
+    filterAssignments();
     const scheduleCalendars = [...document.querySelectorAll('.schedule-calendar')];
     function showScheduleMonth() { scheduleCalendars.forEach((month) => { month.hidden = month.dataset.scheduleMonth !== scheduleMonth.value; }); }
     scheduleMonth.addEventListener('change', showScheduleMonth);
@@ -164,7 +176,11 @@
     function showCalendarMonth() { calendarMonths.forEach((month) => { month.hidden = month.dataset.calendarMonth !== calendarMonth.value; }); }
     calendarMonth.addEventListener('change', showCalendarMonth);
     showCalendarMonth();
-    menuToggle.addEventListener('click', () => { const open = document.body.classList.toggle('menu-open'); menuToggle.setAttribute('aria-expanded', open); });
+    const menuBackdrop = document.getElementById('menuBackdrop');
+    function closeMenu() { document.body.classList.remove('menu-open'); menuToggle.setAttribute('aria-expanded', 'false'); menuBackdrop.hidden = true; }
+    menuToggle.addEventListener('click', () => { const open = document.body.classList.toggle('menu-open'); menuToggle.setAttribute('aria-expanded', open); menuBackdrop.hidden = !open; });
+    menuBackdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
     uploadButton.addEventListener('click', () => syllabusFile.click());
     syllabusFile.addEventListener('change', async () => {
       if (!syllabusFile.files.length) return;
@@ -184,18 +200,45 @@
     const profileName = document.getElementById('profileName'); const profileFocus = document.getElementById('profileFocus'); const saveProfile = document.getElementById('saveProfile');
     if (profileName) profileName.value = localStorage.getItem('studyHubName') || ''; if (profileFocus) profileFocus.value = localStorage.getItem('studyHubFocus') || '';
     saveProfile?.addEventListener('click', () => { localStorage.setItem('studyHubName', profileName.value.trim()); localStorage.setItem('studyHubFocus', profileFocus.value.trim()); showToast('Study preferences saved.'); });
+    document.querySelectorAll('.status-select').forEach((select) => select.addEventListener('change', async () => {
+      const previousStatus = select.dataset.previousStatus || select.defaultValue;
+      select.disabled = true;
+      try {
+        const response = await fetch(`/api/assignments/${select.dataset.assignmentId}/status`, {method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status: select.value})});
+        if (!response.ok) throw new Error('Status update failed');
+        select.dataset.previousStatus = select.value;
+        select.className = `status status-select status-${select.value}`;
+        showToast('Assignment status saved.');
+      } catch (error) {
+        select.value = previousStatus;
+        showToast('Status could not be saved. Please try again.');
+      } finally { select.disabled = false; }
+    }));
     const termFilters = [...document.querySelectorAll('.term-filter')]; const termFilterAll = document.querySelector('.term-filter-all');
     function applyTermFilter() { const terms = termFilters.filter((item) => item.checked).map((item) => item.value); window.location.href = `/?view=materials${terms.length ? `&terms=${encodeURIComponent(terms.join(','))}` : ''}`; }
     termFilters.forEach((item) => item.addEventListener('change', () => { if (termFilterAll) termFilterAll.checked = false; applyTermFilter(); }));
     termFilterAll?.addEventListener('change', () => { if (termFilterAll.checked) { termFilters.forEach((item) => item.checked = false); applyTermFilter(); } });
+    const reviewModal = document.getElementById('canvasReviewModal'); const reviewBackdrop = document.getElementById('canvasReviewBackdrop'); const reviewList = document.getElementById('canvasReviewList');
+    let pendingReview = JSON.parse(localStorage.getItem('pendingCanvasReview') || '[]');
+    function closeCanvasReview() { reviewModal.hidden = true; reviewBackdrop.hidden = true; }
+    function openCanvasReview(items) {
+      pendingReview = items; localStorage.setItem('pendingCanvasReview', JSON.stringify(items));
+      reviewList.innerHTML = items.map((item, index) => `<article class="canvas-review-item"><label><input type="checkbox" class="canvas-review-choice" data-index="${index}" checked><span><strong>${item.action}: ${item.title}</strong><small>${item.description} · ${new Date(item.due_at).toLocaleString()}</small></span></label></article>`).join('');
+      reviewModal.hidden = false; reviewBackdrop.hidden = false;
+    }
+    async function approveCanvasItems(approved) {
+      const applied = await fetch('/api/canvas/sync/approve', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({approved})}).then((response) => response.json());
+      localStorage.removeItem('pendingCanvasReview'); pendingReview = []; closeCanvasReview(); showToast(applied.message || 'Canvas changes reviewed.');
+      if (applied.updated) window.setTimeout(() => window.location.reload(), 700);
+    }
+    document.getElementById('canvasReviewClose')?.addEventListener('click', closeCanvasReview); reviewBackdrop?.addEventListener('click', closeCanvasReview);
+    document.getElementById('canvasDenyAll')?.addEventListener('click', () => { localStorage.removeItem('pendingCanvasReview'); pendingReview = []; closeCanvasReview(); showToast('Canvas changes denied.'); });
+    document.getElementById('canvasApproveSelected')?.addEventListener('click', async () => { try { const approved = [...document.querySelectorAll('.canvas-review-choice:checked')].map((box) => pendingReview[Number(box.dataset.index)].id); await approveCanvasItems(approved); } catch (error) { showToast('Canvas changes could not be approved.'); } });
     document.getElementById('syncCanvasButton')?.addEventListener('click', async () => {
-      try {
-        const result = await fetch('/api/canvas/sync', {method: 'POST'}).then((response) => response.json());
-        showToast(result.message || 'Canvas calendar sync complete.');
-        if (result.updated) window.setTimeout(() => window.location.reload(), 700);
-      } catch (error) { showToast('Canvas sync failed. Please try again.'); }
+      try { const result = await fetch('/api/canvas/sync', {method: 'POST'}).then((response) => response.json()); if (result.status !== 'preview' || !result.items?.length) { showToast(result.message || 'Canvas found no changes.'); return; } openCanvasReview(result.items); }
+      catch (error) { showToast('Canvas sync failed. Please try again.'); }
     });
-    window.setInterval(() => fetch('/api/canvas/sync', {method: 'POST'}).then((response) => response.json()).then((result) => { if (result.status === 'success' && result.updated) window.location.reload(); }).catch(() => {}), 15 * 60 * 1000);
+    if (pendingReview.length) openCanvasReview(pendingReview);
     document.querySelectorAll('[data-placeholder]').forEach((element) => {
       element.addEventListener('click', () => showToast(`${element.dataset.placeholder} is ready for the next workspace integration.`));
     });

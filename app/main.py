@@ -27,8 +27,9 @@ from app.flow import seed_flow
 BASE_DIR = Path(__file__).resolve().parent
 SCHEDULE_FILE = BASE_DIR.parent / "data" / "class_weekend_schedule.json"
 CANVAS_FEED_URL = "https://yale.instructure.com/feeds/calendars/user_U6bzA9TFrph60tflw0HegvUc6worRfFZ4ZVIIfZP.ics"
-CANVAS_IGNORED_TITLE_FRAGMENTS = ("game theory problem set 2", "review session moved to 7 30 pm", "consumer choice exercise individual mgt 411 e1")
+CANVAS_IGNORED_TITLE_FRAGMENTS = ("game theory problem set 2", "review session moved to 7 30 pm", "consumer choice exercise individual mgt 411 e1", "attd colloq 9 11 26 mgt 699 e1", "practice problems class 1a mgt 410 e1", "game theory final exam mgt 404 e1", "nyt bordeaux equation ai generated followup")
 last_canvas_sync = {"status": "not_synced", "updated": 0, "ignored": 0, "at": None, "error": "", "message": "Canvas sync has not been started yet."}
+pending_canvas_sync = {}
 
 
 def normalized_title(value: str) -> str:
@@ -61,6 +62,8 @@ def deduplicate_assignments(db: Session) -> int:
 
 def canvas_category(title: str) -> str:
     lowered = title.lower()
+    if any(word in lowered for word in ("optional", "tour", "panel of peers", "cross campus", "lunch", "social", "event")):
+        return "Other"
     if "review" in lowered or "office hour" in lowered:
         return "Review Session"
     return "Assignment"
@@ -76,7 +79,7 @@ def resolve_canvas_course(title: str, courses: list[Course]) -> Course | None:
     return matches[0] if len(matches) == 1 else None
 
 
-def sync_canvas_feed(db: Session) -> int:
+def sync_canvas_feed(db: Session, preview: bool = False) -> int:
     """Refresh Canvas-owned calendar records while preserving local readings."""
     try:
         request = URLRequest(CANVAS_FEED_URL, headers={"User-Agent": "EMBA Study Hub"})
@@ -104,6 +107,7 @@ def sync_canvas_feed(db: Session) -> int:
             except ValueError:
                 continue
             events.append((fields["SUMMARY"], due, fields.get("LOCATION", "")))
+    original = {item.id: (item.title, item.due_at, item.description, item.course_id) for item in db.scalars(select(Assignment)).all()}
     updated = 0
     ignored = 0
     workspace = db.scalar(select(Workspace).limit(1))
@@ -122,12 +126,29 @@ def sync_canvas_feed(db: Session) -> int:
                 item.course_id = course.id
             item.due_at = due
             item.description = f"{(item.description or category + ' · Canvas').split(' · ', 1)[0]} · {location or 'Canvas'}"
+            item.priority = "low" if category == "Suggested Reading" else "high" if category == "Assignment" else "medium" if category == "Other" else item.priority
             updated += 1
         elif workspace and course:
-            db.add(Assignment(workspace_id=workspace.id, course_id=course.id, title=title, description=f"{category} · {location or 'Canvas'}", due_at=due, status=AssignmentStatus.not_started, priority="normal"))
+            db.add(Assignment(workspace_id=workspace.id, course_id=course.id, title=title, description=f"{category} · {location or 'Canvas'}", due_at=due, status=AssignmentStatus.not_started, priority="high" if category == "Assignment" else "medium" if category == "Other" else "normal"))
             updated += 1
         else:
             ignored += 1
+    if preview:
+        db.flush()
+        pending_canvas_sync.clear()
+        for item in db.scalars(select(Assignment)).all():
+            before = original.get(item.id)
+            after = (item.title, item.due_at, item.description, item.course_id)
+            if before != after:
+                key = str(item.id)
+                pending_canvas_sync[key] = {
+                    "id": key, "title": item.title, "due_at": item.due_at.isoformat(),
+                    "description": item.description or "Assignment · Canvas",
+                    "course_id": item.course_id, "action": "Add" if before is None else "Update",
+                }
+        db.rollback()
+        last_canvas_sync.update({"status": "preview", "updated": len(pending_canvas_sync), "ignored": ignored, "at": datetime.now(timezone.utc).isoformat(), "error": "", "message": "Review Canvas changes before approving them."})
+        return len(pending_canvas_sync)
     updated += deduplicate_assignments(db)
     db.commit()
     last_canvas_sync.update({
@@ -152,17 +173,40 @@ def create_local_schema() -> None:
 
 
 @app.post("/api/canvas/sync")
-def canvas_sync(db: Session = Depends(get_db)) -> dict[str, int | str]:
-    updated = sync_canvas_feed(db)
+def canvas_sync(db: Session = Depends(get_db)) -> dict:
+    updated = sync_canvas_feed(db, preview=True)
     payload = {**last_canvas_sync, "updated": updated}
     if payload["status"] == "not_connected":
         payload["message"] = "Canvas is not connected yet. Open Canvas or connect your course feed to enable syncing."
-    elif payload["status"] == "success":
-        payload["message"] = "Canvas calendar synced successfully."
+    elif payload["status"] == "preview":
+        payload["message"] = f"Canvas found {updated} proposed change(s). Review and approve them before adding to your dashboard."
     else:
         payload["message"] = "Canvas sync has not been started yet."
     payload["error"] = payload.get("error") or ""
+    payload["items"] = list(pending_canvas_sync.values())
     return payload
+
+
+@app.post("/api/canvas/sync/approve")
+def approve_canvas_sync(payload: dict, db: Session = Depends(get_db)) -> dict[str, int | str]:
+    approved = {str(value) for value in payload.get("approved", [])}
+    applied = 0
+    for key in approved:
+        proposal = pending_canvas_sync.get(key)
+        if not proposal:
+            continue
+        item = db.get(Assignment, key)
+        if item is None:
+            workspace = db.scalar(select(Workspace).limit(1))
+            item = Assignment(workspace_id=workspace.id, course_id=proposal["course_id"], title=proposal["title"], due_at=datetime.fromisoformat(proposal["due_at"]), description=proposal["description"], status=AssignmentStatus.not_started, priority="high" if proposal["description"].startswith("Assignment") else "medium" if proposal["description"].startswith("Other") else "normal")
+            db.add(item)
+        else:
+            item.due_at = datetime.fromisoformat(proposal["due_at"]); item.description = proposal["description"]
+        applied += 1
+    db.commit()
+    pending_canvas_sync.clear()
+    last_canvas_sync.update({"status": "success", "updated": applied, "at": datetime.now(timezone.utc).isoformat(), "message": f"Canvas sync approved. {applied} change(s) applied."})
+    return {**last_canvas_sync, "updated": applied}
 
 
 def extract_syllabus_text(filename: str, content: bytes) -> str:
@@ -353,13 +397,20 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
         for week in calendar_lib.Calendar(firstweekday=6).monthdayscalendar(year, month):
             weeks.append([{'day': day, 'items': calendar_by_date.get(f'{year:04d}-{month:02d}-{day:02d}', [])} if day else {'day': 0, 'items': []} for day in week])
         calendar_months.append({'key': f'{year:04d}-{month:02d}', 'label': calendar_lib.month_name[month] + f' {year}', 'weeks': weeks})
-    upcoming = [item for item in calendar_items if (item.due_at.replace(tzinfo=timezone.utc) if item.due_at.tzinfo is None else item.due_at) >= now and item.status != AssignmentStatus.complete][:8]
-    upcoming = [item for item in upcoming if not (item.description or '').startswith('Class ·')]
+    deadline_horizon = local_date + timedelta(days=7)
+    upcoming = [item for item in calendar_items if local_date <= item.due_at.date() <= deadline_horizon and item.status != AssignmentStatus.complete and not (item.description or '').startswith('Class ·')]
     deadline_items = [item for item in calendar_items if not (item.description or '').startswith('Class ·') and (item.due_at.replace(tzinfo=timezone.utc) if item.due_at.tzinfo is None else item.due_at) >= now]
     completed_deadlines = sum(item.status == AssignmentStatus.complete for item in deadline_items)
     completion_percent = round((completed_deadlines / len(deadline_items)) * 100) if deadline_items else 0
-    agenda_items = upcoming[:4]
+    agenda_items = [
+        item for item in upcoming
+        if (item.description or "Assignment").split(" · ", 1)[0]
+        in {"Assignment", "Required Reading", "Review Session"}
+    ][:4]
     calendar_only = request.query_params.get('view') == 'calendar'
+    sync_status = last_canvas_sync["status"]
+    sync_label = {"success": "Connected", "not_connected": "Needs attention"}.get(sync_status, "Not synced")
+    sync_detail = last_canvas_sync["message"] if sync_status != "success" else f"Last synced {last_canvas_sync['at'].replace('T', ' ')[:16]} UTC"
     return templates.TemplateResponse(
         request=request,
         name="dashboard.html",
@@ -390,5 +441,8 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
             "selected_term": selected_term,
             "selected_terms": selected_terms,
             "calendar_locations": calendar_locations,
+            "canvas_sync_label": sync_label,
+            "canvas_sync_detail": sync_detail,
+            "canvas_sync_status": sync_status,
         },
     )
