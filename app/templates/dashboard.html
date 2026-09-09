@@ -78,9 +78,9 @@
         </section>
 
         <section class="panel calendar-panel {% if not calendar_only %}overview-hidden{% endif %}" id="literal-calendar">
-          <div class="panel-heading"><div><p class="eyebrow">Everything due</p><h2>Academic calendar</h2><p class="panel-subtitle">Classes, assignments, readings, and review sessions on each day</p></div><label class="month-filter">Month <select id="calendarMonth">{% for month in calendar_months %}<option value="{{ month['key'] }}"{% if month['key'] == current_calendar_month %} selected{% endif %}>{{ month['label'] }}</option>{% endfor %}</select></label></div>
-          <div class="calendar-legend"><span class="legend-class">Class</span><span class="legend-assignment">Assignment</span><span class="legend-required-reading">Required reading</span><span class="legend-suggested-reading">Suggested reading</span><span class="legend-review-session">Review session</span></div>
-          {% for month in calendar_months %}<div class="month-calendar" data-calendar-month="{{ month['key'] }}"><div class="calendar-week calendar-header"><span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span></div>{% for week in month['weeks'] %}<div class="calendar-week">{% for day in week %}<div class="calendar-day{% if not day['day'] %} blank{% endif %}">{% if day['day'] %}<strong class="day-number">{{ day['day'] }}</strong>{% for item in day['items'] %}<article class="calendar-event calendar-event-{{ (item.description.split(' · ')[0] if item.description else 'Assignment')|lower|replace(' ', '-') }}"><b>{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}</b><span>{{ item.title }}</span><small>{{ course_names.get(item.course_id, 'General') }}{% if calendar_locations.get(item.id) %} · {{ calendar_locations.get(item.id) }}{% endif %}</small></article>{% endfor %}{% endif %}</div>{% endfor %}</div>{% endfor %}</div>{% endfor %}
+          <div class="panel-heading"><div><p class="eyebrow">Everything due</p><h2>Academic calendar</h2><p class="panel-subtitle">Classes, assignments, readings, and review sessions on each day</p></div><div class="assignment-tools"><div class="category-filters calendar-category-filters" aria-label="Filter academic calendar by category">{% for category in ['Class', 'Assignment', 'Required Reading', 'Suggested Reading', 'Review Session', 'Other'] %}<label><input class="calendar-category-filter" type="checkbox" value="{{ category }}" checked> {{ category }}</label>{% endfor %}</div><label class="month-filter">Month <select id="calendarMonth">{% for month in calendar_months %}<option value="{{ month['key'] }}"{% if month['key'] == current_calendar_month %} selected{% endif %}>{{ month['label'] }}</option>{% endfor %}</select></label></div></div>
+          <div class="calendar-legend"><span class="legend-class">Class</span><span class="legend-assignment">Assignment</span><span class="legend-required-reading">Required reading</span><span class="legend-suggested-reading">Suggested reading</span><span class="legend-review-session">Review session</span><span class="legend-other">Other</span></div>
+          {% for month in calendar_months %}<div class="month-calendar" data-calendar-month="{{ month['key'] }}"><div class="calendar-week calendar-header"><span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span></div>{% for week in month['weeks'] %}<div class="calendar-week">{% for day in week %}<div class="calendar-day{% if not day['day'] %} blank{% endif %}">{% if day['day'] %}<strong class="day-number">{{ day['day'] }}</strong>{% for item in day['items'] %}<article class="calendar-event calendar-event-{{ (item.description.split(' · ')[0] if item.description else 'Assignment')|lower|replace(' ', '-') }}" data-category="{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}"><b>{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}</b><span>{{ item.title }}</span><small>{{ course_names.get(item.course_id, 'General') }}{% if calendar_locations.get(item.id) %} · {{ calendar_locations.get(item.id) }}{% endif %}</small></article>{% endfor %}{% endif %}</div>{% endfor %}</div>{% endfor %}</div>{% endfor %}
         </section>
 
         <aside class="right-column homepage-only">
@@ -122,6 +122,8 @@
     const searchInput = document.querySelector('.search-box input');
     const assignmentRows = [...document.querySelectorAll('.assignment-row')];
     const categoryFilters = [...document.querySelectorAll('.category-filter')];
+    const calendarCategoryFilters = [...document.querySelectorAll('.calendar-category-filter')];
+    const calendarEvents = [...document.querySelectorAll('.calendar-event')];
     const globalSearchables = [...document.querySelectorAll('.assignment-row, .calendar-event, .schedule-row, .material-course, .archive-term')];
     const filterEmpty = document.getElementById('filterEmpty');
     const toast = document.getElementById('toast');
@@ -138,6 +140,10 @@
     const chatLog = document.getElementById('chatLog');
     const termFilter = document.getElementById('termFilter');
     const viewButtons = [...document.querySelectorAll('.view-choice-button')];
+    const knownCategories = new Set(['class', 'assignment', 'required reading', 'suggested reading', 'review session', 'other']);
+    function normalizedCategory(value) { const category = (value || 'Assignment').trim(); return knownCategories.has(category.toLowerCase()) ? category : 'Other'; }
+    document.querySelectorAll('.assignment-row').forEach((row) => { const category = normalizedCategory(row.dataset.category); row.dataset.category = category; const tag = row.querySelector('.category-tag'); if (tag) tag.textContent = category; });
+    calendarEvents.forEach((event) => { const category = normalizedCategory(event.dataset.category); event.dataset.category = category; const label = event.querySelector('b'); if (label) label.textContent = category; });
     function setLayout(layout) { document.body.classList.remove('layout-mobile', 'layout-desktop'); document.body.classList.add('layout-' + layout); localStorage.setItem('studyHubLayout', layout); viewButtons.forEach((button) => button.setAttribute('aria-pressed', button.dataset.layout === layout)); }
     const savedLayout = localStorage.getItem('studyHubLayout');
     setLayout(window.innerWidth < 700 ? 'mobile' : (savedLayout || 'desktop'));
@@ -149,7 +155,7 @@
       let visible = 0;
       assignmentRows.forEach((row) => {
         const matchesSearch = row.dataset.search.toLowerCase().includes(query);
-        const matchesCategory = categories.includes((row.dataset.category || 'Assignment').trim().toLowerCase());
+        const matchesCategory = categories.includes(normalizedCategory(row.dataset.category).toLowerCase());
         row.hidden = !(matchesSearch && matchesCategory);
         if (!row.hidden) visible += 1;
       });
@@ -169,6 +175,12 @@
     searchInput.addEventListener('input', filterAssignments);
     categoryFilters.forEach((filter) => filter.addEventListener('change', filterAssignments));
     filterAssignments();
+    function filterCalendar() {
+      const categories = calendarCategoryFilters.filter((filter) => filter.checked).map((filter) => filter.value.trim().toLowerCase());
+      calendarEvents.forEach((event) => { event.hidden = !categories.includes(normalizedCategory(event.dataset.category).toLowerCase()); });
+    }
+    calendarCategoryFilters.forEach((filter) => filter.addEventListener('change', filterCalendar));
+    filterCalendar();
     const scheduleCalendars = [...document.querySelectorAll('.schedule-calendar')];
     function showScheduleMonth() { scheduleCalendars.forEach((month) => { month.hidden = month.dataset.scheduleMonth !== scheduleMonth.value; }); }
     scheduleMonth.addEventListener('change', showScheduleMonth);
