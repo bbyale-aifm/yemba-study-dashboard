@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: yemba-study-dashboard
+    runtime: python
+    plan: free
+    buildCommand: pip install -e .
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
