@@ -210,7 +210,7 @@
     searchInput.addEventListener('input', filterAssignments);
     categoryFilters.forEach((filter) => filter.addEventListener('change', filterAssignments));
     const savedDeadlineCategories = JSON.parse(localStorage.getItem('studyHubDeadlineCategories') || 'null');
-    if (savedDeadlineCategories) categoryFilters.forEach((filter) => { filter.checked = savedDeadlineCategories.includes(filter.value); });
+    if (Array.isArray(savedDeadlineCategories) && savedDeadlineCategories.length) categoryFilters.forEach((filter) => { filter.checked = savedDeadlineCategories.includes(filter.value); });
     filterAssignments();
     function filterCalendar() {
       const categories = calendarCategoryFilters.filter((filter) => filter.checked).map((filter) => filter.value.trim().toLowerCase());
@@ -218,7 +218,7 @@
     }
     calendarCategoryFilters.forEach((filter) => filter.addEventListener('change', filterCalendar));
     const savedCalendarCategories = JSON.parse(localStorage.getItem('studyHubCalendarCategories') || 'null');
-    if (savedCalendarCategories) calendarCategoryFilters.forEach((filter) => { filter.checked = savedCalendarCategories.includes(filter.value); });
+    if (Array.isArray(savedCalendarCategories) && savedCalendarCategories.length) calendarCategoryFilters.forEach((filter) => { filter.checked = savedCalendarCategories.includes(filter.value); });
     calendarCategoryFilters.forEach((filter) => filter.addEventListener('change', () => localStorage.setItem('studyHubCalendarCategories', JSON.stringify(calendarCategoryFilters.filter((item) => item.checked).map((item) => item.value)))));
     filterCalendar();
     expandDeadlineRange?.addEventListener('click', () => { deadlineRange.value = '21'; deadlineRange.dispatchEvent(new Event('change')); });
