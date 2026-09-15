@@ -179,17 +179,11 @@
     function filterAssignments() {
       const query = (searchInput.value || '').toLowerCase().trim();
       const categories = categoryFilters.filter((filter) => filter.checked).map((filter) => filter.value.trim().toLowerCase());
-      const horizonDays = Number(deadlineRange?.value || 7);
-      const today = new Date();
-      const todayKey = new Date(today.getFullYear(), today.getMonth(), today.getDate());
       let visible = 0;
       assignmentRows.forEach((row) => {
         const matchesSearch = row.dataset.search.toLowerCase().includes(query);
         const matchesCategory = categories.includes(normalizedCategory(row.dataset.category).toLowerCase());
-        const dueDate = new Date(`${row.dataset.dueDate}T00:00:00`);
-        const daysAway = Math.round((dueDate - todayKey) / 86400000);
-        const matchesHorizon = daysAway >= 0 && daysAway < horizonDays;
-        row.hidden = !(matchesSearch && matchesCategory && matchesHorizon);
+        row.hidden = !(matchesSearch && matchesCategory);
         if (!row.hidden) visible += 1;
       });
       const upcomingCount = document.getElementById('upcomingCount');
@@ -222,10 +216,9 @@
     filterCalendar();
     expandDeadlineRange?.addEventListener('click', () => { deadlineRange.value = '21'; deadlineRange.dispatchEvent(new Event('change')); });
     deadlineRange?.addEventListener('change', () => {
-      filterAssignments();
       const url = new URL(window.location.href);
       url.searchParams.set('days', deadlineRange.value);
-      window.history.replaceState({}, '', url.toString());
+      window.location.href = url.toString();
     });
     const scheduleCalendars = [...document.querySelectorAll('.schedule-calendar')];
     function showScheduleMonth() { scheduleCalendars.forEach((month) => { month.hidden = month.dataset.scheduleMonth !== scheduleMonth.value; }); }
