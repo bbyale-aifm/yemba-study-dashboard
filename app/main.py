@@ -28,7 +28,7 @@ from app.flow import seed_flow
 BASE_DIR = Path(__file__).resolve().parent
 SCHEDULE_FILE = BASE_DIR.parent / "data" / "class_weekend_schedule.json"
 CANVAS_FEED_URL = "https://yale.instructure.com/feeds/calendars/user_U6bzA9TFrph60tflw0HegvUc6worRfFZ4ZVIIfZP.ics"
-CANVAS_IGNORED_TITLE_FRAGMENTS = ("game theory problem set 2", "review session moved to 7 30 pm", "consumer choice exercise individual mgt 411 e1", "attd colloq 9 11 26 mgt 699 e1", "practice problems class 1a mgt 410 e1", "game theory final exam mgt 404 e1", "nyt bordeaux equation ai generated followup")
+CANVAS_IGNORED_TITLE_FRAGMENTS = ("game theory problem set 2", "review session moved to 7 30 pm", "consumer choice exercise individual mgt 411 e1", "attd colloq 9 11 26 mgt 699 e1", "mgt 699 e1 fa26 emba management colloquium jonathan cohn", "practice problems class 1a mgt 410 e1", "game theory final exam mgt 404 e1", "nyt bordeaux equation ai generated followup")
 last_canvas_sync = {"status": "not_synced", "updated": 0, "ignored": 0, "at": None, "error": "", "message": "Canvas sync has not been started yet."}
 pending_canvas_sync = {}
 CANVAS_TIMEZONE = ZoneInfo("America/New_York")
