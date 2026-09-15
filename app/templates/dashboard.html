@@ -61,7 +61,7 @@
 
       <div class="content-grid">
         <section class="panel assignments-panel homepage-only" id="calendar">
-          <div class="panel-heading"><div><p class="eyebrow">Next 8 days</p><h2>Upcoming deadlines and events</h2><p class="panel-subtitle">Items due today remain visible through the end of today</p></div><div class="assignment-tools"><div class="category-filters" aria-label="Filter by category">{% for category in ['Assignment', 'Required Reading', 'Suggested Reading', 'Review Session', 'Other'] %}<label><input class="category-filter" type="checkbox" value="{{ category }}" checked> {{ category }}</label>{% endfor %}</div></div></div>
+          <div class="panel-heading"><div><p class="eyebrow">Next {{ deadline_days }} days</p><h2>Upcoming deadlines and events</h2><p class="panel-subtitle">Items due today remain visible through the end of today</p></div><div class="assignment-tools"><label class="month-filter">Show <select id="deadlineRange" aria-label="Choose upcoming deadline range">{% for days in [7, 10, 14, 21] %}<option value="{{ days }}"{% if days == deadline_days %} selected{% endif %}>{{ days }} days</option>{% endfor %}</select></label><div class="category-filters" aria-label="Filter by category">{% for category in ['Assignment', 'Required Reading', 'Suggested Reading', 'Review Session', 'Other'] %}<label><input class="category-filter" type="checkbox" value="{{ category }}" checked> {{ category }}</label>{% endfor %}</div></div></div>
           {% if assignments %}
             <div class="assignment-list">
             {% for assignment in assignments %}
@@ -133,6 +133,7 @@
     const scheduleEmpty = document.getElementById('scheduleEmpty');
     const calendarMonth = document.getElementById('calendarMonth');
     const calendarMonths = [...document.querySelectorAll('[data-calendar-month]')];
+    const deadlineRange = document.getElementById('deadlineRange');
     const menuToggle = document.getElementById('menuToggle');
     const uploadButton = document.getElementById('uploadSyllabusButton');
     const syllabusFile = document.getElementById('syllabusFile');
@@ -206,6 +207,11 @@
     }
     calendarCategoryFilters.forEach((filter) => filter.addEventListener('change', filterCalendar));
     filterCalendar();
+    deadlineRange?.addEventListener('change', () => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('days', deadlineRange.value);
+      window.location.href = url.toString();
+    });
     const scheduleCalendars = [...document.querySelectorAll('.schedule-calendar')];
     function showScheduleMonth() { scheduleCalendars.forEach((month) => { month.hidden = month.dataset.scheduleMonth !== scheduleMonth.value; }); }
     scheduleMonth.addEventListener('change', showScheduleMonth);

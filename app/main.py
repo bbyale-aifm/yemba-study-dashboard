@@ -414,7 +414,13 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
         for week in calendar_lib.Calendar(firstweekday=6).monthdayscalendar(year, month):
             weeks.append([{'day': day, 'items': calendar_by_date.get(f'{year:04d}-{month:02d}-{day:02d}', [])} if day else {'day': 0, 'items': []} for day in week])
         calendar_months.append({'key': f'{year:04d}-{month:02d}', 'label': calendar_lib.month_name[month] + f' {year}', 'weeks': weeks})
-    deadline_horizon = local_date + timedelta(days=7)
+    try:
+        deadline_days = int(request.query_params.get('days', '7'))
+    except ValueError:
+        deadline_days = 7
+    if deadline_days not in {7, 10, 14, 21}:
+        deadline_days = 7
+    deadline_horizon = local_date + timedelta(days=deadline_days)
     upcoming = [item for item in calendar_items if local_date <= item.due_at.date() <= deadline_horizon and item.status != AssignmentStatus.complete and not (item.description or '').startswith('Class ·')]
     deadline_items = [item for item in calendar_items if not (item.description or '').startswith('Class ·') and (item.due_at.replace(tzinfo=timezone.utc) if item.due_at.tzinfo is None else item.due_at) >= now]
     completed_deadlines = sum(item.status == AssignmentStatus.complete for item in deadline_items)
@@ -433,8 +439,9 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
         name="dashboard.html",
         context={
             "assignments": upcoming,
+            "deadline_days": deadline_days,
             "today": now.date(),
-            "week_end": (now + timedelta(days=7)).date(),
+            "week_end": (now + timedelta(days=deadline_days)).date(),
             "agenda_label": agenda_label,
             "agenda_start": agenda_start,
             "agenda_end": agenda_end,
