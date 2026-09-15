@@ -65,7 +65,7 @@
           {% if assignments %}
             <div class="assignment-list">
             {% for assignment in assignments %}
-              <article class="assignment-row" data-status="{{ assignment.status.value }}" data-category="{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}" data-due-at="{{ assignment.due_at.isoformat() }}Z" data-search="{{ assignment.title }} {{ course_names.get(assignment.course_id, 'General') }}">
+              <article class="assignment-row" data-status="{{ assignment.status.value }}" data-category="{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}" data-due-at="{{ assignment.due_at.isoformat() }}Z" data-due-date="{{ assignment.due_at.date().isoformat() }}" data-search="{{ assignment.title }} {{ course_names.get(assignment.course_id, 'General') }}">
                 <div class="date-block"><strong>{{ assignment.due_at.strftime('%d') }}</strong><span>{{ assignment.due_at.strftime('%b') }}</span><small class="due-time"></small></div>
                 <div class="assignment-copy"><h3>{{ assignment.title }}</h3><p>{{ course_names.get(assignment.course_id, 'General') }} <span>•</span> {{ assignment.priority|title }} priority</p></div><span class="category-tag">{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}</span>
                 <select class="status status-select status-{{ assignment.status.value }}" data-assignment-id="{{ assignment.id }}" aria-label="Update status"><option value="not_started"{% if assignment.status.value == 'not_started' %} selected{% endif %}>Not started</option><option value="in_progress"{% if assignment.status.value == 'in_progress' %} selected{% endif %}>In progress</option><option value="complete"{% if assignment.status.value == 'complete' %} selected{% endif %}>Complete</option></select>
@@ -179,11 +179,17 @@
     function filterAssignments() {
       const query = (searchInput.value || '').toLowerCase().trim();
       const categories = categoryFilters.filter((filter) => filter.checked).map((filter) => filter.value.trim().toLowerCase());
+      const horizonDays = Number(deadlineRange?.value || 7);
+      const today = new Date();
+      const todayKey = new Date(today.getFullYear(), today.getMonth(), today.getDate());
       let visible = 0;
       assignmentRows.forEach((row) => {
         const matchesSearch = row.dataset.search.toLowerCase().includes(query);
         const matchesCategory = categories.includes(normalizedCategory(row.dataset.category).toLowerCase());
-        row.hidden = !(matchesSearch && matchesCategory);
+        const dueDate = new Date(`${row.dataset.dueDate}T00:00:00`);
+        const daysAway = Math.round((dueDate - todayKey) / 86400000);
+        const matchesHorizon = daysAway >= 0 && daysAway < horizonDays;
+        row.hidden = !(matchesSearch && matchesCategory && matchesHorizon);
         if (!row.hidden) visible += 1;
       });
       const upcomingCount = document.getElementById('upcomingCount');
@@ -216,9 +222,10 @@
     filterCalendar();
     expandDeadlineRange?.addEventListener('click', () => { deadlineRange.value = '21'; deadlineRange.dispatchEvent(new Event('change')); });
     deadlineRange?.addEventListener('change', () => {
+      filterAssignments();
       const url = new URL(window.location.href);
       url.searchParams.set('days', deadlineRange.value);
-      window.location.href = url.toString();
+      window.history.replaceState({}, '', url.toString());
     });
     const scheduleCalendars = [...document.querySelectorAll('.schedule-calendar')];
     function showScheduleMonth() { scheduleCalendars.forEach((month) => { month.hidden = month.dataset.scheduleMonth !== scheduleMonth.value; }); }

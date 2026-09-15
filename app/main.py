@@ -420,7 +420,9 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
         deadline_days = 7
     if deadline_days not in {7, 10, 14, 21}:
         deadline_days = 7
-    deadline_horizon = local_date + timedelta(days=deadline_days - 1)
+    # Load the largest supported window; the browser applies the user's
+    # selected horizon without losing assignments when the initial view is 7 days.
+    deadline_horizon = local_date + timedelta(days=20)
     upcoming = [item for item in calendar_items if local_date <= item.due_at.date() <= deadline_horizon and item.status != AssignmentStatus.complete and not (item.description or '').startswith('Class ·')]
     deadline_items = [item for item in calendar_items if not (item.description or '').startswith('Class ·') and (item.due_at.replace(tzinfo=timezone.utc) if item.due_at.tzinfo is None else item.due_at) >= now]
     completed_deadlines = sum(item.status == AssignmentStatus.complete for item in deadline_items)
