@@ -1845,16 +1845,6 @@
       "priority": "high"
     },
     {
-      "course_code": "MGT 407",
-      "title": "PS 3 due (100 pts)",
-      "description": "Assignment · 11:59 PM",
-      "due_at": "2026-09-23T00:00:00-04:00",
-      "category": "Assignment",
-      "source_time": "11:59 PM",
-      "status": "not_started",
-      "priority": "high"
-    },
-    {
       "course_code": "MGT 409",
       "title": "Homework 2 due (available from Sep 12 3:00pm)",
       "description": "Assignment · 8:00 AM",
