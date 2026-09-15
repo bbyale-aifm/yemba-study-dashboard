@@ -57,6 +57,21 @@ def parse_canvas_datetime(property_name: str, value: str) -> datetime:
     return parsed.replace(tzinfo=zone).astimezone(timezone.utc)
 
 
+def display_due_at(item: Assignment) -> datetime:
+    """Return the event's actual time, including legacy Canvas imports."""
+    due = item.due_at
+    if due.hour == 0 and due.minute == 0 and item.description:
+        match = re.search(r"(?:^| · )((?:[01]?\d)|2[0-3]):([0-5]\d)\s*([AP]M)?", item.description, re.IGNORECASE)
+        if match:
+            hour = int(match.group(1))
+            minute = int(match.group(2))
+            meridiem = (match.group(3) or "").upper()
+            if meridiem:
+                hour = (hour % 12) + (12 if meridiem == "PM" else 0)
+            return datetime(due.year, due.month, due.day, hour, minute, tzinfo=CANVAS_TIMEZONE).astimezone(timezone.utc)
+    return due.replace(tzinfo=timezone.utc) if due.tzinfo is None else due
+
+
 def deduplicate_assignments(db: Session) -> int:
     items = db.scalars(select(Assignment).order_by(Assignment.due_at.asc())).all()
     kept, removed = [], 0
@@ -446,6 +461,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
             "agenda_start": agenda_start,
             "agenda_end": agenda_end,
             "course_names": course_names,
+            "display_due_at": display_due_at,
             "courses": courses,
             "active_courses": len(allowed_ids),
             "vaulted_materials": len(resources),
