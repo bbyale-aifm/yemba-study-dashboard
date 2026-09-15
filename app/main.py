@@ -4,6 +4,7 @@ import json
 import calendar as calendar_lib
 import re
 import ssl
+from zoneinfo import ZoneInfo
 from difflib import SequenceMatcher
 from urllib.request import Request as URLRequest, urlopen
 from email.utils import parsedate_to_datetime
@@ -30,6 +31,7 @@ CANVAS_FEED_URL = "https://yale.instructure.com/feeds/calendars/user_U6bzA9TFrph
 CANVAS_IGNORED_TITLE_FRAGMENTS = ("game theory problem set 2", "review session moved to 7 30 pm", "consumer choice exercise individual mgt 411 e1", "attd colloq 9 11 26 mgt 699 e1", "practice problems class 1a mgt 410 e1", "game theory final exam mgt 404 e1", "nyt bordeaux equation ai generated followup")
 last_canvas_sync = {"status": "not_synced", "updated": 0, "ignored": 0, "at": None, "error": "", "message": "Canvas sync has not been started yet."}
 pending_canvas_sync = {}
+CANVAS_TIMEZONE = ZoneInfo("America/New_York")
 
 
 def normalized_title(value: str) -> str:
@@ -38,6 +40,21 @@ def normalized_title(value: str) -> str:
 
 def utc_datetime(value: datetime) -> datetime:
     return value.replace(tzinfo=timezone.utc) if value.tzinfo is None else value
+
+
+def parse_canvas_datetime(property_name: str, value: str) -> datetime:
+    """Parse Canvas ICS times without shifting the local wall-clock time."""
+    tz_match = re.search(r"(?:^|;)TZID=([^;:]+)", property_name, re.IGNORECASE)
+    is_utc = value.endswith("Z")
+    stamp = value[:-1] if is_utc else value
+    fmt = "%Y%m%d" if "T" not in stamp else "%Y%m%dT%H%M%S"
+    parsed = datetime.strptime(stamp[:8] if fmt == "%Y%m%d" else stamp[:15], fmt)
+    if is_utc:
+        return parsed.replace(tzinfo=timezone.utc)
+    # Canvas commonly emits a floating DTSTART even though it represents the
+    # user's Eastern calendar. An explicit TZID still wins when supplied.
+    zone = ZoneInfo(tz_match.group(1)) if tz_match else CANVAS_TIMEZONE
+    return parsed.replace(tzinfo=zone)
 
 
 def deduplicate_assignments(db: Session) -> int:
@@ -98,15 +115,15 @@ def sync_canvas_feed(db: Session, preview: bool = False) -> int:
         fields = {}
         for line in block.split("END:VEVENT", 1)[0].splitlines():
             if ":" in line:
-                key, value = line.split(":", 1)
-                fields[key.split(";", 1)[0]] = value.replace("\\,", ",").replace("\\n", " ")
+                property_name, value = line.split(":", 1)
+                key = property_name.split(";", 1)[0]
+                fields[key] = (property_name, value.replace("\\,", ",").replace("\\n", " "))
         if fields.get("SUMMARY") and fields.get("DTSTART"):
-            stamp = fields["DTSTART"].replace("Z", "+0000")
             try:
-                due = datetime.strptime(stamp[:8], "%Y%m%d").replace(tzinfo=timezone.utc) if "T" not in stamp else datetime.strptime(stamp[:15], "%Y%m%dT%H%M%S").replace(tzinfo=timezone.utc)
+                due = parse_canvas_datetime(*fields["DTSTART"])
             except ValueError:
                 continue
-            events.append((fields["SUMMARY"], due, fields.get("LOCATION", "")))
+            events.append((fields["SUMMARY"][1], due, fields.get("LOCATION", ("LOCATION", ""))[1]))
     original = {item.id: (item.title, item.due_at, item.description, item.course_id) for item in db.scalars(select(Assignment)).all()}
     updated = 0
     ignored = 0
