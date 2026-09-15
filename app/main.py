@@ -92,6 +92,27 @@ def deduplicate_assignments(db: Session) -> int:
     return removed
 
 
+def remove_non_canvas_duplicates(db: Session) -> int:
+    """Prefer a Canvas assignment over a same-day Zoom copy."""
+    items = db.scalars(select(Assignment).order_by(Assignment.due_at.asc())).all()
+    removed = 0
+    for item in items:
+        item_category = (item.description or "Assignment").split(" · ", 1)[0]
+        item_source = (item.description or "").lower()
+        if "canvas" not in item_source:
+            continue
+        duplicate = next((other for other in items
+            if other.id != item.id
+            and other.course_id == item.course_id
+            and other.due_at.date() == item.due_at.date()
+            and (other.description or "Assignment").split(" · ", 1)[0] == item_category
+            and "zoom" in (other.description or "").lower()), None)
+        if duplicate:
+            db.delete(duplicate)
+            removed += 1
+    return removed
+
+
 def canvas_category(title: str) -> str:
     lowered = title.lower()
     if any(word in lowered for word in ("optional", "tour", "panel of peers", "cross campus", "lunch", "social", "event")):
@@ -236,8 +257,10 @@ def approve_canvas_sync(payload: dict, db: Session = Depends(get_db)) -> dict[st
             item.due_at = datetime.fromisoformat(proposal["due_at"]); item.description = proposal["description"]
         applied += 1
     db.commit()
+    removed = remove_non_canvas_duplicates(db)
+    db.commit()
     pending_canvas_sync.clear()
-    last_canvas_sync.update({"status": "success", "updated": applied, "at": datetime.now(timezone.utc).isoformat(), "message": f"Canvas sync approved. {applied} change(s) applied."})
+    last_canvas_sync.update({"status": "success", "updated": applied, "at": datetime.now(timezone.utc).isoformat(), "message": f"Canvas sync approved. {applied} change(s) applied; {removed} duplicate(s) removed."})
     return {**last_canvas_sync, "updated": applied}
 
 
