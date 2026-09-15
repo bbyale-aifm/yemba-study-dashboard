@@ -54,7 +54,7 @@ def parse_canvas_datetime(property_name: str, value: str) -> datetime:
     # Canvas commonly emits a floating DTSTART even though it represents the
     # user's Eastern calendar. An explicit TZID still wins when supplied.
     zone = ZoneInfo(tz_match.group(1)) if tz_match else CANVAS_TIMEZONE
-    return parsed.replace(tzinfo=zone)
+    return parsed.replace(tzinfo=zone).astimezone(timezone.utc)
 
 
 def deduplicate_assignments(db: Session) -> int:

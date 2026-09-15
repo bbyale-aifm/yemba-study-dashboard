@@ -49,7 +49,7 @@
         <article class="summary-card gold-edge"><span>Upcoming deadlines</span><strong id="upcomingCount">{{ assignments|length }}</strong><small>Across your active courses, based on the filter below</small></article>
         
         <article class="summary-card green-edge calendar-status-card sync-{{ canvas_sync_status }}"><span>Calendar status</span><strong>{{ canvas_sync_label }}</strong><small>{{ canvas_sync_detail }}</small></article>
-        <article class="summary-card layout-card"><span>Page layout</span><strong>Choose your view</strong><div class="view-choice" role="group" aria-label="Choose dashboard layout"><button class="view-choice-button" data-layout="mobile" type="button">Mobile</button><button class="view-choice-button" data-layout="desktop" type="button">Desktop</button></div><small>Your preference is saved on this device.</small></article>
+        <article class="summary-card layout-card"><span>Page layout</span><strong>Choose your view</strong><div class="view-choice" role="group" aria-label="Choose dashboard layout"><button class="view-choice-button" data-layout="mobile" type="button">Mobile</button><button class="view-choice-button" data-layout="desktop" type="button">Desktop</button></div><label class="timezone-choice">Time zone <select id="timezoneChoice" aria-label="Choose your U.S. time zone"><option value="America/New_York">Eastern</option><option value="America/Chicago">Central</option><option value="America/Denver">Mountain</option><option value="America/Los_Angeles">Pacific</option><option value="America/Anchorage">Alaska</option><option value="Pacific/Honolulu">Hawaii</option></select></label><small>Your view and time zone are saved on this device.</small></article>
       </section>
 
       <div class="quick-actions homepage-only" aria-label="Quick actions">
@@ -64,8 +64,8 @@
           {% if assignments %}
             <div class="assignment-list">
             {% for assignment in assignments %}
-              <article class="assignment-row" data-status="{{ assignment.status.value }}" data-category="{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}" data-search="{{ assignment.title }} {{ course_names.get(assignment.course_id, 'General') }}">
-                <div class="date-block"><strong>{{ assignment.due_at.strftime('%d') }}</strong><span>{{ assignment.due_at.strftime('%b') }}</span></div>
+              <article class="assignment-row" data-status="{{ assignment.status.value }}" data-category="{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}" data-due-at="{{ assignment.due_at.isoformat() }}Z" data-search="{{ assignment.title }} {{ course_names.get(assignment.course_id, 'General') }}">
+                <div class="date-block"><strong>{{ assignment.due_at.strftime('%d') }}</strong><span>{{ assignment.due_at.strftime('%b') }}</span><small class="due-time"></small></div>
                 <div class="assignment-copy"><h3>{{ assignment.title }}</h3><p>{{ course_names.get(assignment.course_id, 'General') }} <span>•</span> {{ assignment.priority|title }} priority</p></div><span class="category-tag">{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}</span>
                 <select class="status status-select status-{{ assignment.status.value }}" data-assignment-id="{{ assignment.id }}" aria-label="Update status"><option value="not_started"{% if assignment.status.value == 'not_started' %} selected{% endif %}>Not started</option><option value="in_progress"{% if assignment.status.value == 'in_progress' %} selected{% endif %}>In progress</option><option value="complete"{% if assignment.status.value == 'complete' %} selected{% endif %}>Complete</option></select>
               </article>
@@ -80,7 +80,7 @@
         <section class="panel calendar-panel {% if not calendar_only %}overview-hidden{% endif %}" id="literal-calendar">
           <div class="panel-heading"><div><p class="eyebrow">Everything due</p><h2>Academic calendar</h2><p class="panel-subtitle">Classes, assignments, readings, and review sessions on each day</p></div><div class="assignment-tools"><div class="category-filters calendar-category-filters" aria-label="Filter academic calendar by category">{% for category in ['Class', 'Assignment', 'Required Reading', 'Suggested Reading', 'Review Session', 'Other'] %}<label><input class="calendar-category-filter" type="checkbox" value="{{ category }}" checked> {{ category }}</label>{% endfor %}</div><label class="month-filter">Month <select id="calendarMonth">{% for month in calendar_months %}<option value="{{ month['key'] }}"{% if month['key'] == current_calendar_month %} selected{% endif %}>{{ month['label'] }}</option>{% endfor %}</select></label></div></div>
           <div class="calendar-legend"><span class="legend-class">Class</span><span class="legend-assignment">Assignment</span><span class="legend-required-reading">Required reading</span><span class="legend-suggested-reading">Suggested reading</span><span class="legend-review-session">Review session</span><span class="legend-other">Other</span></div>
-          {% for month in calendar_months %}<div class="month-calendar" data-calendar-month="{{ month['key'] }}"><div class="calendar-week calendar-header"><span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span></div>{% for week in month['weeks'] %}<div class="calendar-week">{% for day in week %}<div class="calendar-day{% if not day['day'] %} blank{% endif %}">{% if day['day'] %}<strong class="day-number">{{ day['day'] }}</strong>{% for item in day['items'] %}<article class="calendar-event calendar-event-{{ (item.description.split(' · ')[0] if item.description else 'Assignment')|lower|replace(' ', '-') }}" data-category="{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}"><b>{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}</b><span>{{ item.title }}</span><small>{{ course_names.get(item.course_id, 'General') }}{% if calendar_locations.get(item.id) %} · {{ calendar_locations.get(item.id) }}{% endif %}</small></article>{% endfor %}{% endif %}</div>{% endfor %}</div>{% endfor %}</div>{% endfor %}
+          {% for month in calendar_months %}<div class="month-calendar" data-calendar-month="{{ month['key'] }}"><div class="calendar-week calendar-header"><span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span></div>{% for week in month['weeks'] %}<div class="calendar-week">{% for day in week %}<div class="calendar-day{% if not day['day'] %} blank{% endif %}">{% if day['day'] %}<strong class="day-number">{{ day['day'] }}</strong>{% for item in day['items'] %}<article class="calendar-event calendar-event-{{ (item.description.split(' · ')[0] if item.description else 'Assignment')|lower|replace(' ', '-') }}" data-category="{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}" data-due-at="{{ item.due_at.isoformat() }}Z"><b>{{ item.description.split(' · ')[0] if item.description else 'Assignment' }}</b><span>{{ item.title }}</span><small>{{ course_names.get(item.course_id, 'General') }}{% if calendar_locations.get(item.id) %} · {{ calendar_locations.get(item.id) }}{% endif %}</small><em class="event-time"></em></article>{% endfor %}{% endif %}</div>{% endfor %}</div>{% endfor %}</div>{% endfor %}
         </section>
 
         <aside class="right-column homepage-only">
@@ -140,6 +140,8 @@
     const chatLog = document.getElementById('chatLog');
     const termFilter = document.getElementById('termFilter');
     const viewButtons = [...document.querySelectorAll('.view-choice-button')];
+    const timezoneChoice = document.getElementById('timezoneChoice');
+    const timezones = ['America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles', 'America/Anchorage', 'Pacific/Honolulu'];
     const knownCategories = new Set(['class', 'assignment', 'required reading', 'suggested reading', 'review session', 'other']);
     function normalizedCategory(value) { const category = (value || 'Assignment').trim(); return knownCategories.has(category.toLowerCase()) ? category : 'Other'; }
     document.querySelectorAll('.assignment-row').forEach((row) => { const category = normalizedCategory(row.dataset.category); row.dataset.category = category; const tag = row.querySelector('.category-tag'); if (tag) tag.textContent = category; });
@@ -148,6 +150,28 @@
     const savedLayout = localStorage.getItem('studyHubLayout');
     setLayout(window.innerWidth < 700 ? 'mobile' : (savedLayout || 'desktop'));
     viewButtons.forEach((button) => button.addEventListener('click', () => setLayout(button.dataset.layout)));
+    const savedTimezone = localStorage.getItem('studyHubTimezone');
+    if (savedTimezone && timezones.includes(savedTimezone)) timezoneChoice.value = savedTimezone;
+    function timezoneLabel(date, timezone) {
+      return new Intl.DateTimeFormat('en-US', {timeZone: timezone, timeZoneName: 'short'}).formatToParts(date).find((part) => part.type === 'timeZoneName')?.value || timezone;
+    }
+    function applyTimezone() {
+      const timezone = timezoneChoice.value;
+      localStorage.setItem('studyHubTimezone', timezone);
+      document.querySelectorAll('.assignment-row[data-due-at]').forEach((row) => {
+        const date = new Date(row.dataset.dueAt);
+        const parts = new Intl.DateTimeFormat('en-US', {timeZone: timezone, day: '2-digit', month: 'short'}).formatToParts(date);
+        row.querySelector('.date-block strong').textContent = parts.find((part) => part.type === 'day')?.value || '';
+        row.querySelector('.date-block span').textContent = parts.find((part) => part.type === 'month')?.value || '';
+        row.querySelector('.due-time').textContent = `${new Intl.DateTimeFormat('en-US', {timeZone: timezone, hour: 'numeric', minute: '2-digit'}).format(date)} ${timezoneLabel(date, timezone)}`;
+      });
+      document.querySelectorAll('.calendar-event[data-due-at]').forEach((event) => {
+        const date = new Date(event.dataset.dueAt);
+        event.querySelector('.event-time').textContent = `${new Intl.DateTimeFormat('en-US', {timeZone: timezone, hour: 'numeric', minute: '2-digit'}).format(date)} ${timezoneLabel(date, timezone)}`;
+      });
+    }
+    timezoneChoice.addEventListener('change', applyTimezone);
+    applyTimezone();
 
     function filterAssignments() {
       const query = (searchInput.value || '').toLowerCase().trim();
