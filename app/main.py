@@ -223,6 +223,8 @@ def create_local_schema() -> None:
     Base.metadata.create_all(bind=engine)
     with SessionLocal() as db:
         seed_flow(db)
+        if remove_non_canvas_duplicates(db):
+            db.commit()
 
 
 @app.post("/api/canvas/sync")
