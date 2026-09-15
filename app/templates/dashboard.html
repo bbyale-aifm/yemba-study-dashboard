@@ -135,6 +135,7 @@
     const calendarMonth = document.getElementById('calendarMonth');
     const calendarMonths = [...document.querySelectorAll('[data-calendar-month]')];
     const deadlineRange = document.getElementById('deadlineRange');
+    const serverDeadlineDays = {{ deadline_days }};
     const menuToggle = document.getElementById('menuToggle');
     const uploadButton = document.getElementById('uploadSyllabusButton');
     const syllabusFile = document.getElementById('syllabusFile');
@@ -153,6 +154,12 @@
     const savedLayout = localStorage.getItem('studyHubLayout');
     setLayout(window.innerWidth < 700 ? 'mobile' : (savedLayout || 'desktop'));
     viewButtons.forEach((button) => button.addEventListener('click', () => setLayout(button.dataset.layout)));
+    const savedDeadlineRange = localStorage.getItem('studyHubDeadlineRange');
+    if (deadlineRange && savedDeadlineRange && ['7', '10', '14', '21'].includes(savedDeadlineRange) && serverDeadlineDays !== Number(savedDeadlineRange)) {
+      const restoredUrl = new URL(window.location.href);
+      restoredUrl.searchParams.set('days', savedDeadlineRange);
+      window.location.replace(restoredUrl.toString());
+    }
     const savedTimezone = localStorage.getItem('studyHubTimezone');
     if (savedTimezone && timezones.includes(savedTimezone)) timezoneChoice.value = savedTimezone;
     function timezoneLabel(date, timezone) {
@@ -216,6 +223,7 @@
     filterCalendar();
     expandDeadlineRange?.addEventListener('click', () => { deadlineRange.value = '21'; deadlineRange.dispatchEvent(new Event('change')); });
     deadlineRange?.addEventListener('change', () => {
+      localStorage.setItem('studyHubDeadlineRange', deadlineRange.value);
       const url = new URL(window.location.href);
       url.searchParams.set('days', deadlineRange.value);
       window.location.href = url.toString();
