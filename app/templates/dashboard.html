@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yale EMBA '28 Study Hub</title>
-  <link rel="stylesheet" href="/static/dashboard.css?v=20260914-typography">
+  <link rel="stylesheet" href="/static/dashboard.css?v=20260919-dupe-delete">
 </head>
 <body class="{% if calendar_only %}calendar-only{% elif request.query_params.get('view') == 'materials' %}materials-only{% elif request.query_params.get('view') == 'assistant' %}assistant-only{% endif %}">
   <header class="topbar">
@@ -68,7 +68,7 @@
               <article class="assignment-row" data-status="{{ assignment.status.value }}" data-category="{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}" data-due-at="{{ display_due_at(assignment).isoformat() }}" data-due-date="{{ assignment.due_at.date().isoformat() }}" data-search="{{ assignment.title }} {{ course_names.get(assignment.course_id, 'General') }}">
                 <div class="date-block"><strong>{{ assignment.due_at.strftime('%d') }}</strong><span>{{ assignment.due_at.strftime('%b') }}</span><small class="due-time"></small></div>
                 <div class="assignment-copy"><h3>{{ assignment.title }}</h3><p>{{ course_names.get(assignment.course_id, 'General') }} <span>•</span> {{ assignment.priority|title }} priority</p></div><span class="category-tag">{{ assignment.description.split(' · ')[0] if assignment.description else 'Assignment' }}</span>
-                <select class="status status-select status-{{ assignment.status.value }}" data-assignment-id="{{ assignment.id }}" aria-label="Update status"><option value="not_started"{% if assignment.status.value == 'not_started' %} selected{% endif %}>Not started</option><option value="in_progress"{% if assignment.status.value == 'in_progress' %} selected{% endif %}>In progress</option><option value="complete"{% if assignment.status.value == 'complete' %} selected{% endif %}>Complete</option></select>
+                <select class="status status-select status-{{ assignment.status.value }}" data-assignment-id="{{ assignment.id }}" aria-label="Update status"><option value="not_started"{% if assignment.status.value == 'not_started' %} selected{% endif %}>Not started</option><option value="in_progress"{% if assignment.status.value == 'in_progress' %} selected{% endif %}>In progress</option><option value="complete"{% if assignment.status.value == 'complete' %} selected{% endif %}>Complete</option></select><details class="assignment-actions"><summary aria-label="More actions for {{ assignment.title }}">•••</summary><div class="assignment-source"><span>Source</span><strong>{{ assignment_source(assignment) }}</strong></div><div class="assignment-action-divider"></div><button class="delete-assignment" type="button" data-assignment-id="{{ assignment.id }}">Remove duplicate</button></details>
               </article>
             {% endfor %}
             </div>
@@ -272,6 +272,23 @@
         select.value = previousStatus;
         showToast('Status could not be saved. Please try again.');
       } finally { select.disabled = false; }
+    }));
+    document.querySelectorAll('.delete-assignment').forEach((button) => button.addEventListener('click', async () => {
+      const row = button.closest('.assignment-row');
+      const title = row?.querySelector('h3')?.textContent || 'this item';
+      if (!window.confirm(`Remove “${title}” as a duplicate? This removes it from the shared dashboard.`)) return;
+      button.disabled = true;
+      try {
+        const response = await fetch(`/api/assignments/${button.dataset.assignmentId}`, {method: 'DELETE'});
+        if (!response.ok) throw new Error('Delete failed');
+        row.remove();
+        button.closest('.assignment-actions')?.removeAttribute('open');
+        filterAssignments();
+        showToast('Item deleted.');
+      } catch (error) {
+        button.disabled = false;
+        showToast('Item could not be deleted.');
+      }
     }));
     const termFilters = [...document.querySelectorAll('.term-filter')]; const termFilterAll = document.querySelector('.term-filter-all');
     function applyTermFilter() { const terms = termFilters.filter((item) => item.checked).map((item) => item.value); window.location.href = `/?view=materials${terms.length ? `&terms=${encodeURIComponent(terms.join(','))}` : ''}`; }

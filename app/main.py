@@ -72,6 +72,47 @@ def display_due_at(item: Assignment) -> datetime:
     return due.replace(tzinfo=timezone.utc) if due.tzinfo is None else due
 
 
+def assignment_source(item: Assignment) -> str:
+    description = (item.description or '').lower()
+    if 'canvas' in description or 'zoom' in description:
+        return 'Canvas'
+    if 'syllabus' in description:
+        return 'Manual import'
+    return 'Local entry'
+
+
+def find_canvas_assignment(db: Session, title: str, course: Course | None, category: str, event_uid: str = '') -> Assignment | None:
+    if event_uid:
+        item = db.scalar(select(Assignment).where(Assignment.description.ilike(f'%Canvas UID:{event_uid}%')).limit(1))
+        if item:
+            return item
+    item = db.scalar(select(Assignment).where(Assignment.title == title).limit(1))
+    if item or not course:
+        return item
+    wanted = normalized_title(title)
+    candidates = db.scalars(select(Assignment).where(Assignment.course_id == course.id)).all()
+    return next((candidate for candidate in candidates
+        if (candidate.description or 'Assignment').split(' · ', 1)[0] == category
+        and (normalized_title(candidate.title).startswith(wanted[:80])
+             or wanted.startswith(normalized_title(candidate.title)[:80])
+             or SequenceMatcher(None, normalized_title(candidate.title), wanted).ratio() >= .86)), None)
+
+
+def restore_canvas_sync_status(db: Session) -> None:
+    """Keep the sync indicator after a process restart/refresh."""
+    if last_canvas_sync["status"] in {"success", "preview"}:
+        return
+    has_canvas_records = db.scalar(select(Assignment.id).where(Assignment.description.ilike('%Canvas%')).limit(1))
+    if has_canvas_records:
+        now = datetime.now(timezone.utc).isoformat()
+        last_canvas_sync.update({
+            "status": "success",
+            "at": now,
+            "error": "",
+            "message": "Canvas records are loaded in this dashboard.",
+        })
+
+
 def deduplicate_assignments(db: Session) -> int:
     items = db.scalars(select(Assignment).order_by(Assignment.due_at.asc())).all()
     kept, removed = [], 0
@@ -159,30 +200,29 @@ def sync_canvas_feed(db: Session, preview: bool = False) -> int:
                 due = parse_canvas_datetime(*fields["DTSTART"])
             except ValueError:
                 continue
-            events.append((fields["SUMMARY"][1], due, fields.get("LOCATION", ("LOCATION", ""))[1]))
-    original = {item.id: (item.title, item.due_at, item.description, item.course_id) for item in db.scalars(select(Assignment)).all()}
+                events.append((fields["SUMMARY"][1], due, fields.get("LOCATION", ("LOCATION", ""))[1], fields.get("UID", ("UID", ""))[1]))
+    original = {item.id: (item.title, utc_datetime(item.due_at), item.description, item.course_id) for item in db.scalars(select(Assignment)).all()}
     updated = 0
     ignored = 0
     workspace = db.scalar(select(Workspace).limit(1))
     courses = db.scalars(select(Course)).all()
-    for title, due, location in events:
+    for title, due, location, event_uid in events:
         if any(fragment in normalized_title(title) for fragment in CANVAS_IGNORED_TITLE_FRAGMENTS):
             continue
-        item = db.scalar(select(Assignment).where(Assignment.title == title).limit(1))
         course = resolve_canvas_course(title, courses)
         category = canvas_category(title)
-        if not item and course:
-            candidates = db.scalars(select(Assignment).where(Assignment.course_id == course.id)).all()
-            item = next((candidate for candidate in candidates if (candidate.description or "Assignment").split(" · ", 1)[0] == category and SequenceMatcher(None, normalized_title(candidate.title), normalized_title(title)).ratio() >= .80 and abs((utc_datetime(candidate.due_at) - utc_datetime(due)).total_seconds()) <= 14 * 86400), None)
+        item = find_canvas_assignment(db, title, course, category, event_uid)
+        if item and abs((utc_datetime(item.due_at) - utc_datetime(due)).total_seconds()) > 14 * 86400:
+            item = None
         if item:
             if not item.course_id and course:
                 item.course_id = course.id
             item.due_at = due
-            item.description = f"{(item.description or category + ' · Canvas').split(' · ', 1)[0]} · {location or 'Canvas'}"
+            item.description = f"{(item.description or category + ' · Canvas').split(' · ', 1)[0]} · {location or 'Canvas'}" + (f" · Canvas UID:{event_uid}" if event_uid else "")
             item.priority = "low" if category == "Suggested Reading" else "high" if category == "Assignment" else "medium" if category == "Other" else item.priority
             updated += 1
         elif workspace and course:
-            db.add(Assignment(workspace_id=workspace.id, course_id=course.id, title=title, description=f"{category} · {location or 'Canvas'}", due_at=due, status=AssignmentStatus.not_started, priority="high" if category == "Assignment" else "medium" if category == "Other" else "normal"))
+            db.add(Assignment(workspace_id=workspace.id, course_id=course.id, title=title, description=f"{category} · {location or 'Canvas'}" + (f" · Canvas UID:{event_uid}" if event_uid else ""), due_at=due, status=AssignmentStatus.not_started, priority="high" if category == "Assignment" else "medium" if category == "Other" else "normal"))
             updated += 1
         else:
             ignored += 1
@@ -191,7 +231,12 @@ def sync_canvas_feed(db: Session, preview: bool = False) -> int:
         pending_canvas_sync.clear()
         for item in db.scalars(select(Assignment)).all():
             before = original.get(item.id)
-            after = (item.title, item.due_at, item.description, item.course_id)
+            after = (item.title, utc_datetime(item.due_at), item.description, item.course_id)
+            if before and after:
+                # Canvas may reformat location text between feed requests;
+                # only stable assignment fields should create a review update.
+                before = (before[0], before[1], (before[2] or '').split(' · ', 1)[0], before[3])
+                after = (after[0], after[1], (after[2] or '').split(' · ', 1)[0], after[3])
             if before != after:
                 key = str(item.id)
                 pending_canvas_sync[key] = {
@@ -230,6 +275,12 @@ def create_local_schema() -> None:
 @app.post("/api/canvas/sync")
 def canvas_sync(db: Session = Depends(get_db)) -> dict:
     updated = sync_canvas_feed(db, preview=True)
+    if last_canvas_sync["status"] == "preview" and updated == 0:
+        last_canvas_sync.update({
+            "status": "success",
+            "at": datetime.now(timezone.utc).isoformat(),
+            "message": "Canvas is up to date. No new changes were found.",
+        })
     payload = {**last_canvas_sync, "updated": updated}
     if payload["status"] == "not_connected":
         payload["message"] = "Canvas is not connected yet. Open Canvas or connect your course feed to enable syncing."
@@ -404,8 +455,19 @@ def update_assignment_status(assignment_id: str, payload: dict, db: Session = De
     return {"status": item.status.value}
 
 
+@app.delete("/api/assignments/{assignment_id}")
+def delete_assignment(assignment_id: str, db: Session = Depends(get_db)) -> dict:
+    item = db.get(Assignment, assignment_id)
+    if not item:
+        return {"status": "not_found"}
+    db.delete(item)
+    db.commit()
+    return {"status": "deleted", "id": assignment_id}
+
+
 @app.get("/", response_class=HTMLResponse)
 def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
+    restore_canvas_sync_status(db)
     now = datetime.now(timezone.utc)
     local_date = now.astimezone().date()
     if local_date.weekday() >= 5:
@@ -487,6 +549,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
             "agenda_end": agenda_end,
             "course_names": course_names,
             "display_due_at": display_due_at,
+            "assignment_source": assignment_source,
             "courses": courses,
             "active_courses": len(allowed_ids),
             "vaulted_materials": len(resources),
