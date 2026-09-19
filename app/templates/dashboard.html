@@ -48,7 +48,7 @@
       <section class="summary homepage-only" aria-label="Study summary">
         <article class="summary-card gold-edge"><span>Upcoming deadlines</span><strong id="upcomingCount">{{ assignments|length }}</strong><small>Across your active courses, based on the filter below</small></article>
         
-        <article class="summary-card green-edge calendar-status-card sync-{{ canvas_sync_status }}"><span>Calendar status</span><strong>{{ canvas_sync_label }}</strong><small>{{ canvas_sync_detail }}</small></article>
+        <article class="summary-card green-edge calendar-status-card sync-{{ canvas_sync_status }}"><span>Calendar status</span><strong id="canvasSyncLabel">{{ canvas_sync_label }}</strong><small id="canvasSyncDetail">{{ canvas_sync_detail }}</small></article>
         <article class="summary-card layout-card"><span>Page layout</span><strong>Choose your view</strong><div class="view-choice" role="group" aria-label="Choose dashboard layout"><button class="view-choice-button" data-layout="mobile" type="button">Mobile</button><button class="view-choice-button" data-layout="desktop" type="button">Desktop</button></div><small>Your preference is saved on this device.</small></article>
         <article class="summary-card timezone-card"><span>Time zone</span><strong>Choose your time zone</strong><label class="timezone-choice"><select id="timezoneChoice" aria-label="Choose your U.S. time zone"><option value="America/New_York">Eastern</option><option value="America/Chicago">Central</option><option value="America/Denver">Mountain</option><option value="America/Los_Angeles">Pacific</option><option value="America/Anchorage">Alaska</option><option value="Pacific/Honolulu">Hawaii</option></select></label><small>Your time zone is saved on this device.</small></article>
       </section>
@@ -311,7 +311,7 @@
     document.getElementById('canvasDenyAll')?.addEventListener('click', () => { localStorage.removeItem('pendingCanvasReview'); pendingReview = []; closeCanvasReview(); showToast('Canvas changes denied.'); });
     document.getElementById('canvasApproveSelected')?.addEventListener('click', async () => { try { const approved = [...document.querySelectorAll('.canvas-review-choice:checked')].map((box) => pendingReview[Number(box.dataset.index)].id); await approveCanvasItems(approved); } catch (error) { showToast('Canvas changes could not be approved.'); } });
     document.getElementById('syncCanvasButton')?.addEventListener('click', async () => {
-      try { const result = await fetch('/api/canvas/sync', {method: 'POST'}).then((response) => response.json()); if (result.status !== 'preview' || !result.items?.length) { showToast(result.message || 'Canvas found no changes.'); return; } openCanvasReview(result.items); }
+      try { const result = await fetch('/api/canvas/sync', {method: 'POST'}).then((response) => response.json()); const syncLabel = document.getElementById('canvasSyncLabel'); const syncDetail = document.getElementById('canvasSyncDetail'); if (syncLabel && result.status === 'success') syncLabel.textContent = 'Connected'; if (syncDetail && result.status === 'success') syncDetail.textContent = result.message || 'Canvas is up to date.'; if (result.status !== 'preview' || !result.items?.length) { showToast(result.message || 'Canvas found no changes.'); return; } openCanvasReview(result.items); }
       catch (error) { showToast('Canvas sync failed. Please try again.'); }
     });
     if (pendingReview.length) openCanvasReview(pendingReview);
