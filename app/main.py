@@ -286,6 +286,8 @@ def canvas_sync(db: Session = Depends(get_db)) -> dict:
         payload["message"] = "Canvas is not connected yet. Open Canvas or connect your course feed to enable syncing."
     elif payload["status"] == "preview":
         payload["message"] = f"Canvas found {updated} proposed change(s). Review and approve them before adding to your dashboard."
+    elif payload["status"] == "success":
+        payload["message"] = payload.get("message") or "Canvas sync completed successfully."
     else:
         payload["message"] = "Canvas sync has not been started yet."
     payload["error"] = payload.get("error") or ""
