@@ -268,11 +268,17 @@ def create_local_schema() -> None:
     Base.metadata.create_all(bind=engine)
     with SessionLocal() as db:
         seed_flow(db)
-        if not db.scalar(select(Assignment.id).where(Assignment.title == 'Canvas PS 3 [MGT 407 E1]').limit(1)):
+        statistics_item = db.scalar(select(Assignment).where(Assignment.title.in_(['Canvas PS 3 [MGT 407 E1]', 'PS 3 due (100 pts)'])).limit(1))
+        if statistics_item:
+            statistics_item.title = 'PS 3 [MGT 407 E1]'
+            statistics_item.description = 'Assignment · 9:00 AM · Canvas'
+            statistics_item.due_at = datetime(2026, 9, 25)
+            db.commit()
+        else:
             workspace = db.scalar(select(Workspace).limit(1))
             course = db.scalar(select(Course).where(Course.code == 'MGT 407').limit(1))
             if workspace and course:
-                db.add(Assignment(workspace_id=workspace.id, course_id=course.id, title='Canvas PS 3 [MGT 407 E1]', description='Assignment · 11:59 PM · Canvas', due_at=datetime(2026, 9, 23), status=AssignmentStatus.not_started, priority='high'))
+                db.add(Assignment(workspace_id=workspace.id, course_id=course.id, title='PS 3 [MGT 407 E1]', description='Assignment · 9:00 AM · Canvas', due_at=datetime(2026, 9, 25), status=AssignmentStatus.not_started, priority='high'))
                 db.commit()
         if remove_non_canvas_duplicates(db):
             db.commit()
