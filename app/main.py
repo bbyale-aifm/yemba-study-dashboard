@@ -4,6 +4,7 @@ import json
 import calendar as calendar_lib
 import re
 import ssl
+import os
 from zoneinfo import ZoneInfo
 from difflib import SequenceMatcher
 from urllib.request import Request as URLRequest, urlopen
@@ -544,6 +545,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
         context={
             "assignments": upcoming,
             "deadline_days": deadline_days,
+            "hide_not_started": os.getenv("LIVE_DEPLOYMENT", "false").lower() == "true" or os.getenv("RENDER", "").lower() == "true",
             "today": now.date(),
             "week_end": (now + timedelta(days=deadline_days)).date(),
             "agenda_label": agenda_label,

@@ -6,3 +6,6 @@ services:
     buildCommand: pip install -e .
     startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /
+    envVars:
+      - key: LIVE_DEPLOYMENT
+        value: "true"
